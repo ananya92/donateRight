@@ -6,6 +6,9 @@
 // =============================================================
 var path = require("path");
 
+// Requiring middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -15,15 +18,16 @@ module.exports = function(app) {
   // index route loads index.html - home page when user hasn't logged in
   app.get("/", function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.render("index"); //example of rendering
   });
 
   // user route loads user-home.html - home page after a regular user logs-in
-  app.get("/user", function(req, res) {
+  app.get("/user", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/user-home.html"));
   });
 
   // cuser route loads cuser-home.html - home page after a charity user logs-in
-  app.get("/cuser", function(req, res) {
+  app.get("/cuser", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/cuser-home.html"));
   });
 
@@ -38,27 +42,27 @@ module.exports = function(app) {
   });
 
   // donation route loads donation.html - donation form for posting new donation 
-  app.get("/donation", function(req, res) {
+  app.get("/donation", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/donation.html"));
   });
 
   // charity route loads charitySearch.html - searching for a charity and loading its info and upcoming charity events
-  app.get("/charity", function(req, res) {
+  app.get("/charity", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/charitySearch.html"));
   });
 
   // event route loads event.html - event form for posting new event
-  app.get("/event", function(req, res) {
+  app.get("/event", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/event.html"));
   });
 
    // /user/history route loads dhistory.html - donation history of user
-   app.get("/user/history", function(req, res) {
+   app.get("/user/history", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/dhistory.html"));
   });
   
   // /cuser/history route loads ehistory.html - event history of charity user
-  app.get("/cuser/history", function(req, res) {
+  app.get("/cuser/history", isAuthenticated, function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/ehistory.html"));
   });
 };
