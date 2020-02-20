@@ -16,6 +16,21 @@ module.exports = function(app) {
     
   });
 
+  app.get("/api/event", function(req, res) {
+    // route to get list of all events
+
+  });
+
+  app.get("/api/donation", function(req, res) {
+    // route to get data about a particular donation
+    
+  });
+
+  app.get("/api/charity", function(req, res) {
+    // route to get data about the searched charity
+    
+  });
+
   app.post("/api/event", function(req, res) {
     // route to POST a new event
   });
@@ -25,3 +40,4 @@ module.exports = function(app) {
 });
 
 };
+
