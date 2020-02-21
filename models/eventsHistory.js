@@ -1,22 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
-    var Donations = sequelize.define("Donations", {
-        description: {
+    var EventHistory = sequelize.define("EventHistory", {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        category: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
 
-    Donations.associate = function(models) {
-        Donations.belongsTo(models.User, {
+    EventHistory.associate = function(models) {
+        EventHistory.belongsTo(models.Events, {
           foreignKey: {
             allowNull: false
           }
         });
     };
 
-    return Donations;
-};
+    return EventHistory;
+}; 
