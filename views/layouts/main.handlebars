@@ -11,61 +11,62 @@
 	</head>
 	<body>
 		<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item is-size-2 has-text-primary has-text-weight-semibold is-family-code" href="/">
-      Donate Right
-    </a>
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-2 has-text-primary has-text-weight-semibold is-family-primary" href="/">
+                Donate Right
+                </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarDonateRight">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarDonateRight">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
 
-  <div id="navbarDonateRight" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" id="mapViewEvents">
-        Upcoming charity events
-      </a>
+            <div id="navbarDonateRight" class="navbar-menu">
+                <div class="navbar-start">
+                <a class="navbar-item" id="mapViewEvents">
+                    Upcoming charity events
+                </a>
 
-      <a class="navbar-item" id="mapViewDonations">
-        Donation posts
-      </a>
+                <a class="navbar-item" id="mapViewDonations">
+                    Donation posts
+                </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    More
+                    </a>
 
-        <div class="navbar-dropdown">
-            <a class="navbar-item" href="/list-events">
-                List view - charity events
-            </a>
-            <a class="navbar-item" href="/list-donations">
-                List view - donation posts
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="/charity">
-                Search for a charity
-            </a>
-        </div>
-      </div>
-    </div>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/list-events">
+                            List view - all charity events
+                        </a>
+                        <a class="navbar-item" href="/list-donations">
+                            List view - all donation posts
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="/charity">
+                            Search for a charity
+                        </a>
+                    </div>
+                </div>
+                </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Register</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+                <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                    <a class="button is-primary" href="/register">
+                        <strong>Register</strong>
+                    </a>
+                    <a class="button is-light" href="/login">
+                        Log in
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav>
+        {{{body}}}
 	</body>
 </html>
