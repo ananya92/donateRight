@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Donations = sequelize.define("Donations", {
+    var DonationHistory = sequelize.define("DonationHistory", {
         description: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,13 +10,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Donations.associate = function(models) {
-        Donations.belongsTo(models.User, {
+    DonationHistory.associate = function(models) {
+        DonationHistory.belongsTo(models.Donations, {
           foreignKey: {
             allowNull: false
           }
         });
     };
 
-    return Donations;
+    return DonationHistory;
 };
