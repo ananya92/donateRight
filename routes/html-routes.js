@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads index.html - home page when user hasn't logged in
   app.get("/", function(req, res) {
-    //res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.render("index");
   });
 
   // user route loads user-home.html - home page after a regular user logs-in
@@ -60,5 +60,15 @@ module.exports = function(app) {
   // /cuser/history route loads ehistory.html - event history of charity user
   app.get("/cuser/history", function(req, res) {
     //res.sendFile(path.join(__dirname, "../public/ehistory.html"));
+  });
+
+  // list-events route loads list view of all events
+  app.get("/list-events", function(req, res) {
+
+  });
+  
+  // list-donations route loads list view of all donations
+  app.get("/list-donations", function(req, res) {
+
   });
 };
