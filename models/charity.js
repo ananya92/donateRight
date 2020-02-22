@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         lat: {
             type: DataTypes.DECIMAL(9,6),
             allowNull: true

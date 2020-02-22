@@ -24,7 +24,7 @@ $(document).ready(function() {
   var cPhoneInput = $("input#c-phoneNumber-input");
   var cEmailInput = $("input#c-email-input");
   var charitykeyInput = $("input#charitykey-input");
-  var descriptionInput =  $("input#c-description-input");
+  var descriptionInput =  $("textarea#c-description-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
   uSignUpForm.on("submit", function(event) {
@@ -78,15 +78,33 @@ $(document).ready(function() {
         }
         // If we have an email and password, run the signUpUser function
         signUpUser(userData.firstName, userData.lastName, userData.phoneNumber, userData.email, userData.password, userData.charityKey);
-        cufirstInput.val("");
-        culastInput.val("");
-        cuphoneInput.val("");
-        cuemailInput.val("");
-        cupasswordInput.val("");
-        uCharitykeyInput.val("");
+        // cufirstInput.val(""); //depending on redirection
+        // culastInput.val("");
+        // cuphoneInput.val("");
+        // cuemailInput.val("");
+        // cupasswordInput.val("");
+        // uCharitykeyInput.val("");
     });
   });
-  // Does a post to the signup route. If successful, we are redirected to the members page
+
+  // charity registration submit button is clicked
+  cSignUpForm.on("submit", function(event) {
+    event.preventDefault();
+    var userData = {
+      name: cNameInput.val().trim(),
+      phoneNumber: cPhoneInput.val().trim(),
+      email: cEmailInput.val().trim(),
+      charityKey: charitykeyInput.val().trim(),
+      description: descriptionInput.val()
+    };
+    if (!userData.name || !userData.phoneNumber || !userData.email || !userData.charityKey || !userData.description) {
+      return;
+    }
+    // If we have an email and password, run the signUpUser function
+    registerCharity(userData.name, userData.phoneNumber, userData.email, userData.charityKey, userData.description);
+  });
+
+  // Does a post to the signup route. If successful, we are redirected to the user's home page
   // Otherwise we log any errors
   function signUpUser(firstName, lastName, phoneNumber, email, password, charityKey) {
     
@@ -105,6 +123,23 @@ $(document).ready(function() {
         // If there's an error, handle it by throwing up a bootstrap alert
     })
     .catch(handleLoginErr);     
+  }
+
+  function registerCharity(name, phoneNumber, email, charityKey, description) {
+    var data = {
+      name: name,
+      phoneNumber: phoneNumber,
+      email: email,
+      charityKey: charityKey,
+      description: description
+    };
+    console.log(data);
+    $.post("/api/registerCharity", data)
+      .then(function(data) {
+        window.location.replace("/login");
+        // If there's an error, handle it by throwing up a bootstrap alert
+    })
+    .catch(handleLoginErr); 
   }
 
   function handleLoginErr(err) {
