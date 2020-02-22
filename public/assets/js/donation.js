@@ -101,8 +101,7 @@ function createDonation(description, category, lat, lng) {
     })
       .then(function() {
         window.location.replace("/user");
-        // If there's an error, log the error
-      })
+      }) // If there's an error, log the error
       .catch(function(err) {
         console.log(err);
       });

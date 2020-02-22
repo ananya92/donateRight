@@ -30,7 +30,7 @@ module.exports = function(app) {
   // user route loads home page after user logs-in
   app.get("/user", isAuthenticated, function(req, res) {
     console.log(req.user);
-    if(req.user.charityKey) {
+    if(req.user.charityKey) { //add equal to null
       res.render("user-home", {
         layout: "cuser.handlebars"
       });
