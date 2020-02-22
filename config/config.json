@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Barista!993",
-    "database": "testing_db",
+    "password": "123glowiris",
+    "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false

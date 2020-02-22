@@ -27,7 +27,16 @@ app.use(express.static("public"));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ 
+  defaultLayout: "main",
+  helpers:{
+    section: function(name, options){
+        if(!this._sections){this._sections = {}};
+        this._sections[name] = options.fn(this);
+        return null;
+    } 
+  }
+}));
 app.set("view engine", "handlebars");
 
 // We need to use sessions to keep track of our user's login status
@@ -42,7 +51,7 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on http://localhost:" + PORT);
   });
