@@ -25,6 +25,10 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        charityKey: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
 

@@ -81,11 +81,29 @@ module.exports = function(app) {
 
   // logging in a user
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    // console.log(req.body);
+    if(req.body.charityKey) {
+      db.User.findOne({
+        where: {
+          charityKey: req.body.charityKey
+        }
+      })
+      .then(function(dbUser) {
+        req.user.userType = "charity";
+        res.json(req.user); //might be dbUser... check later
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+    }
+    else {
+      req.user.userType = "regular";
+      res.json(req.user);
+    }
   });
 
   // signing up a new user
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/register", function(req, res) {
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -94,7 +112,7 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(function() {
-        res.redirect(307, "/api/login");
+        res.redirect('/login');
       })
       .catch(function(err) {
         res.status(401).json(err);
@@ -116,7 +134,8 @@ module.exports = function(app) {
     })
       .then(function() {
         //add a thank you message
-        res.redirect(307, "/user"); //need to fix, not finding address, maybe something to do with handlebars
+        res.redirect('/user') //need to fix, not finding address, maybe something to do with handlebars
+        
       })
       .catch(function(err) {
         res.status(401).json(err);

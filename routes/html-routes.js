@@ -33,14 +33,15 @@ module.exports = function(app) {
 
   // user route loads home page after user logs-in
   app.get("/user", isAuthenticated, function(req, res) {
-    if(req.session.userType === "regular") {
-      res.render("user-home", {
-        layout: "user.handlebars"
-      });
-    }
-    else if(req.session.userType === "charity") {
+    console.log(req.user);
+    if(req.user.charityKey) { //add equal to null
       res.render("user-home", {
         layout: "cuser.handlebars"
+      });
+    }
+    else {
+      res.render("user-home", {
+        layout: "user.handlebars"
       });
     }
   });
