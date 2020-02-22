@@ -18,15 +18,15 @@ module.exports = function(sequelize, DataTypes) {
         },
         lat: {
             type: DataTypes.DECIMAL(9,6),
-            allowNull: false
+            allowNull: true
         },
         lng: {
             type: DataTypes.DECIMAL(9,6),
-            allowNull: false
+            allowNull: true
         },
         charityKey: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
     
