@@ -12,7 +12,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     if (req.user) {
       // User has logged in
-      if(req.user.charityKey) {
+      if(req.user.type == "charity") {
         res.render("user-home", {
           layout: "cuser.handlebars"
         });
@@ -29,8 +29,7 @@ module.exports = function(app) {
   });
   // user route loads home page after user logs-in
   app.get("/user", isAuthenticated, function(req, res) {
-    console.log(req.user);
-    if(req.user.charityKey) { //add equal to null
+    if(req.user.type == "charity") {
       res.render("user-home", {
         layout: "cuser.handlebars"
       });
@@ -58,7 +57,7 @@ module.exports = function(app) {
   // charity search when user isn't logged in
   app.get("/charity", function(req, res) {
     if (req.user) {
-      if(req.user.charityKey) {
+      if(req.user.type == "charity") {
         res.render("charitySearch", {
           layout: "cuser.handlebars"
         });
@@ -72,6 +71,12 @@ module.exports = function(app) {
     else {
       res.render("charitySearch");
     }
+  });
+  // settings route for charites as to set location
+  app.get("/settings", isAuthenticated, function(req, res) {
+    res.render("charitySettings", {
+      layout: "cuser.handlebars"
+    });
   });
   // event route loads event form for posting new event
   app.get("/event", isAuthenticated, function(req, res) {
@@ -94,7 +99,7 @@ module.exports = function(app) {
   // list-events route loads list view of all events
   app.get("/list-events", function(req, res) {
     if (req.user) {
-      if(req.user.charityKey) {
+      if(req.user.type == "charity") {
         res.render("listEvents", {
           layout: "cuser.handlebars"
         });
@@ -112,7 +117,7 @@ module.exports = function(app) {
   // list-donations route loads list view of all donations
   app.get("/list-donations", function(req, res) {
     if (req.user) {
-      if(req.user.charityKey) {
+      if(req.user.type == "charity") {
         res.render("listDonations", {
           layout: "cuser.handlebars"
         });

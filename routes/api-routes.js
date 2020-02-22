@@ -1,5 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
+
 module.exports = function(app) {
   app.get("/api/user/:id", function(req, res) {
     db.User.findOne({
@@ -10,6 +11,7 @@ module.exports = function(app) {
       res.json(dbUser);
     })
   });
+
   app.get("/api/event/:id", function(req, res) {
     // route to get data about a particular event
     db.Events.findOne({
@@ -20,6 +22,7 @@ module.exports = function(app) {
       res.json(dbEvents);
     })
   });
+
   app.get("/api/donation/:id", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findOne({
@@ -30,6 +33,7 @@ module.exports = function(app) {
       res.json(dbDonations);
     })
   });
+
   app.get("/api/charity/:id", function(req, res) {
     // route to get data about the searched charity
     db.Charity.findOne({
@@ -40,57 +44,87 @@ module.exports = function(app) {
       res.json(dbCharity);
     })
   });
+
   app.get("/api/user", function(req, res) {
     // route to get list of all events
     db.User.findAll({ }).then(function(dbUser) {
       res.json(dbUser);
     })
   });
+
   app.get("/api/event", function(req, res) {
     // route to get list of all events
     db.Events.findAll({ }).then(function(dbEvents) {
       res.json(dbEvents);
     })
   });
+
   app.get("/api/donation", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findAll({ include: [db.User] }).then(function(dbDonations) { //remember to restart server after changing clauses
       res.json(dbDonations);
     })
   });
+
   app.get("/api/charity", function(req, res) {
     // route to get data about the searched charity
     db.Charity.findAll({ }).then(function(dbCharity) {
       res.json(dbCharity);
     })
   });
+
   // logging out a user
   app.get("/logout", function(req, res) {
+    db.User.update({ type: null }, {
+      where: {
+        email: req.session.passport.user.email
+      }
+    })
+    .then(function() {
     req.logout();
     res.redirect("/");
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
   });
+
   // logging in a user
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    // console.log(req.body);
+  app.post("/api/login", function(req, res, next) {
+    console.log(req.body);
     if(req.body.charityKey) {
-      db.User.findOne({
+      db.User.update({ type: "charity" }, {
         where: {
-          charityKey: req.body.charityKey
+          email: req.body.email
         }
       })
       .then(function(dbUser) {
-        req.user.userType = "charity";
-        res.json(req.user); //might be dbUser... check later
+        //authenticating after updating the user
+        passport.authenticate('local', function(err, user, info) {
+          if (err) { return next(err); }
+          if (!user) { return res.redirect('/login'); }
+          req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.redirect('/user');
+          });
+        })(req, res, next);
       })
       .catch(function(err) {
         res.status(401).json(err);
       });
     }
     else {
-      req.user.userType = "regular";
-      res.json(req.user);
+      passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/login'); }
+        req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.redirect('/user');
+        });
+      })(req, res, next);
     }
   });
+
   // signing up a new user
   app.post("/api/register", function(req, res) {
     db.User.create({
@@ -98,7 +132,8 @@ module.exports = function(app) {
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      charityKey: req.body.charityKey
     })
       .then(function() {
         res.redirect('/login');
@@ -107,9 +142,28 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  //register a new charity
+  app.post("/api/registerCharity", function(req, res) {
+    db.Charity.create({
+      name: req.body.name,
+      phoneNumber: req.body.phoneNumber,
+      email: req.body.email,
+      charityKey: req.body.charityKey,
+      description: req.body.description
+    })
+      .then(function() {
+        res.redirect('/login');
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
   app.post("/api/event", function(req, res) {
     // route to POST a new event
   });
+
   app.post("/api/donation", function(req, res) {
     // route to POST a new donation
     db.Donations.create({
@@ -122,6 +176,7 @@ module.exports = function(app) {
       .then(function() {
         //add a thank you message
         res.redirect('/user') //need to fix, not finding address, maybe something to do with handlebars
+        
       })
       .catch(function(err) {
         res.status(401).json(err);
