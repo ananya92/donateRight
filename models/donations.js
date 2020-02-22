@@ -7,6 +7,14 @@ module.exports = function(sequelize, DataTypes) {
         category: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        lat: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
+        },
+        lng: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
         }
     });
 

@@ -16,6 +16,14 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
+        lat: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
+        },
+        lng: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
+        },
         charityKey: {
             type: DataTypes.STRING,
             allowNull: false
