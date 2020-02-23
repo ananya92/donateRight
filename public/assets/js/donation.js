@@ -1,9 +1,11 @@
 async function initMap() {
     var myLocation;
+    var zoom;
     
     await getPosition()
     .then((position) => {
         myLocation = {lat: position.coords.latitude, lng: position.coords.longitude};
+        zoom = 10;
         // can add zoom later
         // sets lat&lng incase the user doesn't move the marker
         window.latInput = position.coords.latitude;
@@ -12,12 +14,13 @@ async function initMap() {
     .catch((err) => {
         console.error(err.message);
         myLocation = {lat: -25.363, lng: 131.044};
+        zoom = 4;
     });
     
     // console.log(myLocation);
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: zoom,
         center: myLocation
     });
 
