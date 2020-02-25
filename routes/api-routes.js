@@ -59,6 +59,39 @@ module.exports = function(app) {
     })
   });
 
+  // list-events route loads list view of all events
+  app.get("/list-events", function(req, res) {
+    db.Events.findAll({ }).then(function(dbEvents){
+      const context = {
+        events: dbEvents.map(event => {
+          return {
+            name: event.name,
+            description: event.description
+          }
+        })
+      }
+      if (req.user) {
+        if(req.user.type == "charity") {
+          res.render("listEvents", {
+            events: context.events,
+            layout: "cuser.handlebars"
+          });
+        }
+        else {
+          res.render("listEvents", {
+            events: context.events,
+            layout: "user.handlebars"
+          });
+        }
+      }
+      else {
+        res.render("listEvents", {
+          events : context.events
+        });
+      }
+    });
+  });
+  
   app.get("/api/donation", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findAll({ include: [db.User] }).then(function(dbDonations) { //remember to restart server after changing clauses

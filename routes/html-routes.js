@@ -6,6 +6,7 @@
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Routes
 // =============================================================
+var db = require("../models");
 module.exports = function(app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
   // index route loads home page
@@ -96,24 +97,7 @@ module.exports = function(app) {
       layout: "cuser.handlebars"
     });
   });
-  // list-events route loads list view of all events
-  app.get("/list-events", function(req, res) {
-    if (req.user) {
-      if(req.user.type == "charity") {
-        res.render("listEvents", {
-          layout: "cuser.handlebars"
-        });
-      }
-      else {
-        res.render("listEvents", {
-          layout: "user.handlebars"
-        });
-      }
-    }
-    else {
-      res.render("listEvents");
-    }
-  });
+
   // list-donations route loads list view of all donations
   app.get("/list-donations", function(req, res) {
     if (req.user) {
@@ -145,7 +129,7 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the username
       res.json({
-        username: req.user.email,
+        username: req.session.passport.user.email,
       });
     }
   });

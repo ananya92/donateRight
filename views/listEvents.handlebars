@@ -1,0 +1,24 @@
+<div class="box">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            List of all charity events:
+        </p>
+        <br>
+        <aside class="menu">
+            <ul class="menu-list">
+                {{#each events}}
+                <div class="box">
+                    <a href="/event">
+                        <li>
+                            <div class="content is-small">
+                                <h2>{{this.name}}</h2>
+                                <p>{{this.description}}</h2>
+                            </div>
+                        </li>
+                    </a>
+                </div>
+                {{/each}}
+            </ul>
+        </aside>
+    </article>
+</div>
