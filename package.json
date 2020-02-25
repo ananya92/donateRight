@@ -4,7 +4,6 @@
   "description": "Donation platform bridging charities and donors",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
     "start": "node server.js"
   },
   "repository": {
@@ -24,6 +23,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
+    "heroku-cli": "^7.0.9",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
