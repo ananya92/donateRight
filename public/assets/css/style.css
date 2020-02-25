@@ -10,3 +10,29 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.missionStatement {
+    font-size: 50px;
+    color: #000000;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 15.5%;
+    background-color: #ffffff;
+    opacity: 0.7;
+    border-radius: 10px;
+}
+
+.bg-img { 
+    background-image: url(/assets/images/charity.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #999;
+}
+
+.img-responsive {
+    display: block; 
+    max-width: 100%;
+    height: auto;
+} 
