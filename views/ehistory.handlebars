@@ -1,11 +1,21 @@
-<ul>
-  {{#each dbEvents}}
-  <li data-id={{dataValues.id}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
-    <p>This is the description: {{dataValues.description}}</p>
-    <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td>
-  </li>
-  <hr>  
-  {{/each}}
-</ul>
-
-<script src="assets/js/map.js"></script>
+<div id="event-list" class="box">
+  <article class="panel is-primary">
+      <p class="panel-heading .has-text-centered">
+          Event History:
+      </p>
+      <br>
+      <aside class="menu">
+          <ul class="menu-list">
+              {{#each dbEvents}}
+              <div class="box">
+                <li data-id={{dataValues.id}}>
+                    <div class="content is-small">
+                        <h2>Description: {{dataValues.description}}</h2>
+                    </div>
+                </li>
+              </div>
+              {{/each}}
+          </ul>
+      </aside>
+  </article>
+</div>
