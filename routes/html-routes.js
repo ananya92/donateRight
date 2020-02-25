@@ -144,29 +144,6 @@ module.exports = function(app) {
   });
 
   // list-events route loads list view of all events
-  // app.get("/list-events", function(req, res) {
-  //   db.Events.findAll({}).then(function(dbEvent){
-  //     if (req.user) {
-  //       if(req.user.type == "charity") {
-  //         res.render("listEvents", {
-  //           dbEvent,
-  //           layout: "cuser.handlebars"
-  //         });
-  //       }
-  //       else {
-  //         res.render("listEvents", {
-  //           dbEvent,
-  //           layout: "user.handlebars"
-  //         });
-  //       }
-  //     }
-  //     else {
-  //       res.render("listEvents", {dbEvent});
-  //     }
-  //   });
-  // });
-
-  // list-events route loads list view of all events
   app.get("/list-events", function(req, res) {
     db.Events.findAll({ }).then(function(dbEvents){
       const context = {
@@ -197,29 +174,6 @@ module.exports = function(app) {
         res.render("listEvents", {
           events : context.events
         });
-      }
-    });
-  });
-
-  // list-donations route loads list view of all donations
-  app.get("/list-donations", function(req, res) {
-    db.Donations.findAll({}).then(function(dbDonation){
-      if (req.user) {
-        if(req.user.type == "charity") {
-          res.render("listDonations", {
-            dbDonation,
-            layout: "cuser.handlebars"
-          });
-        }
-        else {
-          res.render("listDonations", {
-            dbDonation,
-            layout: "user.handlebars"
-          });
-        }
-      }
-      else {
-        res.render("listDonations", {dbDonation});
       }
     });
   });

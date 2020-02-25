@@ -32,11 +32,12 @@ async function initMap() {
             '</div>'+
             '<br>'+
             '<div class="form-group">'+
-            '<label for="categories">Number of Results</label>'+
+            '<label for="categories">Category</label>'+
             '<br>'+
             '<select id="categories" value="category"> <!--Drop down to what category the items are in-->'+
                 '<option>Food</option>'+
                 '<option>Clothes</option>'+
+                '<option>Books</option>'+
                 '<option>Homeware</option>'+
                 '<option>Help</option>'+
             '</select>'+
