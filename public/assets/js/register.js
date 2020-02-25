@@ -76,14 +76,8 @@ $(document).ready(function() {
         if (!userData.firstName || !userData.lastName || !userData.phoneNumber || !userData.email || !userData.password || !userData.charityKey) {
           return;
         }
-        // If we have an email and password, run the signUpUser function
+        // If we have all required data, run the signUpUser function
         signUpUser(userData.firstName, userData.lastName, userData.phoneNumber, userData.email, userData.password, userData.charityKey);
-        // cufirstInput.val(""); //depending on redirection
-        // culastInput.val("");
-        // cuphoneInput.val("");
-        // cuemailInput.val("");
-        // cupasswordInput.val("");
-        // uCharitykeyInput.val("");
     });
   });
 
@@ -136,7 +130,7 @@ $(document).ready(function() {
     console.log(data);
     $.post("/api/registerCharity", data)
       .then(function(data) {
-        window.location.replace("/login");
+        window.location.replace("/register");
         // If there's an error, handle it by throwing up a bootstrap alert
     })
     .catch(handleLoginErr); 

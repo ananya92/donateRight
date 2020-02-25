@@ -1,10 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
     var Events = sequelize.define("Events", {
-        name: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        description: {
+        lat: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
+        },
+        lng: {
+            type: DataTypes.DECIMAL(9,6),
+            allowNull: false
+        },
+        charityKey: {
             type: DataTypes.STRING,
             allowNull: false
         }
@@ -14,7 +22,8 @@ module.exports = function(sequelize, DataTypes) {
         Events.belongsTo(models.Charity, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          onDelete: "cascade"
         });
     };
 

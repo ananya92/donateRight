@@ -1,0 +1,12 @@
+<ul>
+  {{#each dbDonation}}
+  <li data-id={{dataValues.id}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
+    <p>This is the description: {{dataValues.description}}</p>
+    <p>Category: {{dataValues.category}}</p>
+    <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td>
+  </li>
+  <hr>  
+  {{/each}}
+</ul>
+
+<script src="assets/js/map.js"></script>

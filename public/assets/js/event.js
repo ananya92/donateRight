@@ -24,25 +24,14 @@ async function initMap() {
         center: myLocation
     });
 
-    var contentString = '<form class="donation">'+
+    var contentString = '<form class="event">'+
             '<div class="form-group">'+
             '<label for="Description">Description</label>'+
             '<br>'+
             '<textarea type="text" class="form-control" id="description-input" placeholder="Blankets, water ..."></textarea>'+
             '</div>'+
             '<br>'+
-            '<div class="form-group">'+
-            '<label for="categories">Number of Results</label>'+
-            '<br>'+
-            '<select id="categories" value="category"> <!--Drop down to what category the items are in-->'+
-                '<option>Food</option>'+
-                '<option>Clothes</option>'+
-                '<option>Homeware</option>'+
-                '<option>Help</option>'+
-            '</select>'+
-            '</div>'+ //add another drop down for updating status, can be set 'available' as default
-            '<br>'+ //can also add another drop down to determine who can see it (add a model column to filter)
-            '<button type="submit" class="donationCreation">Create Donation</button>'+
+            '<button type="submit" class="eventCreation">Create Event</button>'+
         '</form>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -53,7 +42,7 @@ async function initMap() {
         position: myLocation,
         map: map,
         draggable: true,
-        title: 'Donation location'
+        title: 'Event location'
     });
     
     marker.addListener('click', function() {
@@ -74,52 +63,50 @@ function getPosition() {
 }
 
 //on click function for donation creation (ajax post)
-$(document).on('submit', '.donation', function(event){
+$(document).on('submit', '.event', function(event){
     var descriptionInput = $("textarea#description-input");
 
     event.preventDefault();
-    var donationData = {
+    var eventData = {
         description: descriptionInput.val().trim(),
-        category: $("#categories").val(),
         lat: latInput,
         lng: lngInput
     }
 
-    if(!donationData.description) {
+    if(!eventData.description) {
         return;
     }
 
-    console.log(donationData);
+    console.log(eventData);
 
     //ajax call and if successful returns the user to home page
-    createDonation(donationData.description, donationData.category, donationData.lat, donationData.lng); 
-    createHistory(donationData.description, donationData.category);    
+    createEvent(eventData.description, eventData.lat, eventData.lng); 
+    createHistory(eventData.description);   
 });
-function createHistory(description, category) {
-    $.post("/api/donationHistory", {
+
+//function to create history item
+function createHistory(description) {
+    $.post("/api/eventHistory", {
         description: description,
-        category: category
     })
     .then(function() {
-        console.log("redirecting place");
-        window.location.replace("/user");    
-    }) // If there's an error with ajax, log the error
+        window.location.replace("/user");
+    }) // If there's an error, log the error
     .catch(function(err) {
         console.log(err);
-    })
+    });
 }
 
-function createDonation(description, category, lat, lng) {
-    $.post("/api/donation", {
-        description: description,
-        category: category,
-        lat: lat,
-        lng: lng
+function createEvent(description, lat, lng) {
+    $.post("/api/event", {
+      description: description,
+      lat: lat,
+      lng: lng
     })
-    .then(function() {
+      .then(function() {
         console.log("success");
-    }) // If there's an error with ajax, log the error
-    .catch(function(err) {
-    console.log(err);
-    });
+      }) // If there's an error, log the error
+      .catch(function(err) {
+        console.log(err);
+      });
 }

@@ -1,26 +1,62 @@
-<h2>Login Form</h2>
-<form class="login">
-    <div class="form-group">
-    <label for="Email">Email address</label>
-    <input type="email" class="form-control" id="email-input" placeholder="Email">
-    </div>
-
-    <div class="form-group">
-    <label for="Password">Password</label>
-    <input type="password" class="form-control" id="password-input" placeholder="Password">
-    </div>
-
-    <div class="form-group">
-    <label for="Charity Key">Charity Key</label>
-    <input type="charityKey" class="form-control" id="charityKey-input">
-    </div>
-
-    <button type="submit" class="btn btn-default">Login</button>
-</form>
-<p id="errorMsg" style="color:red;"></p>
-
-<br>
-
-<p>Or sign up <a href="/register">here</a></p>
+<article class="panel is-primary">
+    <p class="panel-heading .has-text-centered">
+        Login
+    </p>
+    <br>
+    <br>
+    <form class="login">
+        <div id="login">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Enter user details</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input id="email-input" class="input" type="text" required placeholder="john.doe@gmail.com">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input  id="password-input" class="input" type="password" required placeholder="********">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <div class="field">
+                            <p class="control is-expanded">
+                            <input class="input" id="charityKey-input" type="password" placeholder="********">
+                            </p>
+                        </div>
+                        <p class="help">Only for Charity Users</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">
+                        Submit
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <p class="has-text-centered">Or sign up <a href="/register">here</a></p>
+    <br>
+</article>
 
 <script src="assets/js/login.js"></script>
