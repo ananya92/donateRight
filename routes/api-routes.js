@@ -22,7 +22,7 @@ module.exports = function(app) {
       res.json(dbEvents);
     })
   });
-*/
+
   app.get("/api/donation/:id", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findOne({
@@ -31,6 +31,26 @@ module.exports = function(app) {
       }
     }).then(function(dbDonations) {
       res.json(dbDonations);
+    })
+  });
+*/
+  app.get("/api/donation/:id", function(req, res) {
+    // route to get data about a particular event
+    db.Donations.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [db.User]
+    }).then(function(data) {
+      const context = {
+          name: data.User.firstName + data.User.lastName,
+          description: data.description,
+          category: data.category,
+          contact: data.User.phoneNumber,
+          email: data.User.email
+      }
+      res.json(context);
+      res.end();
     })
   });
 
@@ -94,6 +114,40 @@ module.exports = function(app) {
     });
   });
   
+  // list-donations route loads list view of all donations
+  app.get("/list-donations", function(req, res) {
+    db.Donations.findAll({ }).then(function(dbDonations){
+      const context = {
+        donations: dbDonations.map(donation => {
+          return {
+            category: donation.category,
+            description: donation.description,
+            id: donation.id,
+          }
+        })
+      };
+      if (req.user) {
+        if(req.user.type == "charity") {
+          res.render("listDonations", {
+            donations: context.donations,
+            layout: "cuser.handlebars"
+          });
+        }
+        else {
+          res.render("listDonations", {
+            donations: context.donations,
+            layout: "user.handlebars"
+          });
+        }
+      }
+      else {
+        res.render("listDonations", {
+          donations : context.donations
+        });
+      }
+    });
+  });
+
   app.get("/api/donation", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findAll({ include: [db.User] }).then(function(dbDonations) { //remember to restart server after changing clauses

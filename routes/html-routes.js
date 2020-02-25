@@ -98,24 +98,6 @@ module.exports = function(app) {
     });
   });
 
-  // list-donations route loads list view of all donations
-  app.get("/list-donations", function(req, res) {
-    if (req.user) {
-      if(req.user.type == "charity") {
-        res.render("listDonations", {
-          layout: "cuser.handlebars"
-        });
-      }
-      else {
-        res.render("listDonations", {
-          layout: "user.handlebars"
-        });
-      }
-    }
-    else {
-      res.render("listDonations");
-    }
-  });
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

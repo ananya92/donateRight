@@ -1,0 +1,100 @@
+<div id="donation-list" class="box">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            List of all donation posts:
+        </p>
+        <br>
+        <aside class="menu">
+            <ul class="menu-list">
+                {{#each donations}}
+                <div class="box">
+                    <a>
+                        <li data-id={{this.id}}>
+                            <div class="content is-small">
+                                <h3>{{this.description}}</h3>
+                                <p>Category: {{this.category}}</p>
+                            </div>
+                        </li>
+                    </a>
+                </div>
+                {{/each}}
+            </ul>
+        </aside>
+    </article>
+</div>
+<div id="donation-details" class="box is-hidden">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            Donation details:
+        </p>
+        <br>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Donor Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="content is-medium">
+                        <h2 id="name" style="padding-left:20px"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Category</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p id="category"></p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Description</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p id="description"></p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Contact details</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p id="email"></p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label"></label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p id="phnumber"></p>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered is-vcentered">
+            <div class="column"></div>
+            <div class="column is-narrow">
+                <button id="backBtn" class="button is-primary is-vcentered" style="text-align:center">
+                    Go Back
+                </button>
+            </div>
+            <div class="column"></div>
+        </div>
+        <br>
+    </article>
+</div>
+
+{{#section 'script'}}
+
+<script type="application/javascript" src="assets/js/listDonations.js"></script>
+
+{{/section}}
