@@ -426,7 +426,7 @@ module.exports = function(app) {
   });
 
   //route to get donations by category
-  app.delete("/api/donation/category/:category", function(req, res) {
+  app.get("/api/donation/category/:category", function(req, res) {
     db.Donations.findAll({
       where: {
         category: req.params.category
