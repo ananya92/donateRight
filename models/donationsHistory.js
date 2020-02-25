@@ -11,10 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     DonationHistory.associate = function(models) {
-        DonationHistory.belongsTo(models.Donations, {
+        DonationHistory.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          onDelete: "cascade"
         });
     };
 

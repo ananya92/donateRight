@@ -34,5 +34,21 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     
+    Charity.associate = function(models) {
+        Charity.hasMany(models.Events, {
+            foreignKey: {
+              allowNull: false
+            }
+        });
+    };
+
+    Charity.associate = function(models) {
+        Charity.hasMany(models.EventHistory, {
+            foreignKey: {
+              allowNull: false
+            }
+        });
+    };
+    
     return Charity;
 };

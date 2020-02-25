@@ -6,6 +6,7 @@ $(document).ready(function() {
 
     $("li").on("click", function(event) {
         event.preventDefault();
+        console.log(event);
         var id = $(this).data("id");
         $.ajax({
             method: "GET",

@@ -22,7 +22,8 @@ module.exports = function(sequelize, DataTypes) {
         Donations.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          onDelete: "cascade"
         });
     };
 

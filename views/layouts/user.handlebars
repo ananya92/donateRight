@@ -36,7 +36,10 @@
                         <a class="navbar-item" href="/donation">
                             Post new donation
                         </a>
-                        <a class="navbar-item" href="/user/history">
+                        <a class="navbar-item" href="/active-donations">
+                            Active donations
+                        </a>
+                        <a class="navbar-item" href="/userhistory">
                             View donation history
                         </a>
                         <hr class="navbar-divider">
@@ -50,7 +53,9 @@
                         <a class="navbar-item" href="/charity">
                             Search for a charity                            
                         </a>
-                        <input class="input" type="text" id="charity-input" style="width: 80%; left:15px;" required placeholder="Name">
+                        <a class="navbar-item" href="/usersettings">
+                            User settings                            
+                        </a>
                     </div>
                 </div>
                 </div>
@@ -58,6 +63,41 @@
                 <div class="navbar-end">
                 <div class="navbar-item">
                     Welcome <span class="member-name"></span>!
+                </div>
+                <div class="navbar-item  has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    Filter
+                    </a>
+
+                    <div class="navbar-dropdown viewIcons">
+                        <a class="navbar-item" value="">
+                            All
+                        </a>
+                        <a class="navbar-item" value="Charity">
+                            Charities
+                        </a>
+                        <a class="navbar-item" value="Event">
+                            Events
+                        </a>
+                        <a class="navbar-item" value="Donation">
+                            Donations
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" value="Food">
+                            - Food
+                        </a>
+                        <a class="navbar-item" value="Clothes">
+                            - Clothes
+                        </a>
+                        <a class="navbar-item" value="Homeware"> 
+                            - Homeware
+                        </a>
+                        <a class="navbar-item" value="Help"> 
+                            - Help
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item">
                     <div class="buttons">
                     <a class="button is-light" href="/logout">
                         Logout
@@ -68,6 +108,5 @@
             </div>
         </nav>
         {{{body}}}
-        {{{_sections.script}}}
 	</body>
 </html>
