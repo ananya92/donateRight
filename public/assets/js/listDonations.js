@@ -4,6 +4,7 @@ $(document).ready(function() {
     donationList.removeClass("is-hidden");
     donationDetails.addClass("is-hidden");
 
+    var donationPosts;
     $("li").on("click", function(event) {
         event.preventDefault();
         var id = $(this).data("id");
@@ -25,5 +26,9 @@ $(document).ready(function() {
     $("#backBtn").on("click", function() {
         event.preventDefault();
         location.reload();
+    });
+
+    $(".dropdown-item").on("click", function() {
+        window.location.href("/api/donation/category/" + $(this).text());
     });
 });

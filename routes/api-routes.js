@@ -35,16 +35,6 @@ module.exports = function(app) {
   });
 
   app.get("/api/donation/:id", function(req, res) {
-    db.Donations.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbDonations) {
-      res.json(dbDonations);
-    })
-  });
-
-  app.get("/api/donation/:id", function(req, res) {
     // route to get data about a particular event
     db.Donations.findOne({
       where: {
@@ -53,7 +43,7 @@ module.exports = function(app) {
       include: [db.User]
     }).then(function(data) {
       const context = {
-          name: data.User.firstName + data.User.lastName,
+          name: data.User.firstName + " " + data.User.lastName,
           description: data.description,
           category: data.category,
           contact: data.User.phoneNumber,
@@ -432,6 +422,48 @@ module.exports = function(app) {
       }
     }).then(function(dbCharity) {
       res.json(dbCharity);
+    });
+  });
+
+  //route to get donations by category
+  app.delete("/api/donation/category/:category", function(req, res) {
+    db.Donations.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function(dbDonations) {
+      res.render(dbDonations);
+      const context = {
+        donations: dbDonations.map(donation => {
+          return {
+            category: donation.category,
+            description: donation.description,
+            id: donation.id,
+          }
+        })
+      };
+      if (req.user) {
+        if(req.user.type == "charity") {
+          res.render("listDonations", {
+            donations: context.donations,
+            category: req.params.category,
+            layout: "cuser.handlebars"
+          });
+        }
+        else {
+          res.render("listDonations", {
+            donations: context.donations,
+            category: req.params.category,
+            layout: "user.handlebars"
+          });
+        }
+      }
+      else {
+        res.render("listDonations", {
+          donations : context.donations,
+          category: req.params.category,
+        });
+      }
     });
   });
 };

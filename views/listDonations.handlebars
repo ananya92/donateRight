@@ -3,6 +3,39 @@
         <p class="panel-heading .has-text-centered">
             List of all donation posts:
         </p>
+        <div class="dropdown is-right is-hoverable">
+            <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Filter by Category</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                <a class="dropdown-item">
+                    Food
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item">
+                    Clothes
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item">
+                    Books
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item">
+                    Homeware
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item">
+                    Help
+                </a>
+                </div>
+            </div>
+        </div>
         <br>
         <aside class="menu">
             <ul class="menu-list">
@@ -34,9 +67,7 @@
             </div>
             <div class="field-body">
                 <div class="field">
-                    <div class="content is-medium">
-                        <h2 id="name" style="padding-left:20px"></h2>
-                    </div>
+                    <h2 id="name"></h2>
                 </div>
             </div>
         </div>
@@ -93,8 +124,5 @@
     </article>
 </div>
 
-{{#section 'script'}}
-
 <script type="application/javascript" src="assets/js/listDonations.js"></script>
 
-{{/section}}
