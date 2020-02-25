@@ -11,7 +11,7 @@ module.exports = function(app) {
       res.json(dbUser);
     })
   });
-
+  /*
   app.get("/api/event/:id", function(req, res) {
     // route to get data about a particular event
     db.Events.findOne({
@@ -22,7 +22,7 @@ module.exports = function(app) {
       res.json(dbEvents);
     })
   });
-
+*/
   app.get("/api/donation/:id", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findOne({
@@ -59,6 +59,41 @@ module.exports = function(app) {
     })
   });
 
+  // list-events route loads list view of all events
+  app.get("/list-events", function(req, res) {
+    db.Events.findAll({ }).then(function(dbEvents){
+      const context = {
+        events: dbEvents.map(event => {
+          return {
+            name: event.name,
+            description: event.description,
+            id: event.id,
+            charityId: event.CharityId
+          }
+        })
+      };
+      if (req.user) {
+        if(req.user.type == "charity") {
+          res.render("listEvents", {
+            events: context.events,
+            layout: "cuser.handlebars"
+          });
+        }
+        else {
+          res.render("listEvents", {
+            events: context.events,
+            layout: "user.handlebars"
+          });
+        }
+      }
+      else {
+        res.render("listEvents", {
+          events : context.events
+        });
+      }
+    });
+  });
+  
   app.get("/api/donation", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findAll({ include: [db.User] }).then(function(dbDonations) { //remember to restart server after changing clauses
@@ -179,5 +214,26 @@ module.exports = function(app) {
       .catch(function(err) {
         res.status(401).json(err);
       });
+  });
+
+  app.get("/api/event/:id", function(req, res) {
+    // route to get data about a particular event
+    db.Events.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [db.Charity]
+    }).then(function(data) {
+      const context = {
+          name: data.name,
+          description: data.description,
+          charityName: data.Charity.name,
+          charityDesc: data.Charity.description,
+          contact: data.Charity.phoneNumber,
+          email: data.Charity.email
+      }
+      res.json(context);
+      res.end();
+    })
   });
 };
