@@ -4,8 +4,7 @@ var zoom;
 
 // onclick for showing donation on map
 $(document).on("click", ".map-donation", function() {
-  var mapLocation = {lat: $(this).parent().data("lat"),lng: $(this).parent().data("lng")};
-
+  var mapLocation = {lat: $(this).parent().parent().data("lat"),lng: $(this).parent().parent().data("lng")};
   window.location.replace("/user?lat="+ mapLocation.lat +"&lng=" + mapLocation.lng);
 });
 
@@ -28,6 +27,9 @@ $(document).on("click", ".viewIcons", function(event) {
       break;
     case "- Clothes":
       userSelection = "Clothes";
+      break;
+    case "- Books":
+      userSelection = "Books";
       break;
     case "- Homeware":
       userSelection = "Homeware";
@@ -209,22 +211,25 @@ function initMap(mapLocation) {
 
   var icons = {
       Food: {
-          icon: iconBase + 'icon63.png'
+        icon: iconBase + 'icon63.png'
       },
       Homeware: {
-          icon: iconBase + 'icon28.png'
+        icon: iconBase + 'icon28.png'
       },
       Clothes: {
-          icon: iconBase + 'icon57.png'
+        icon: iconBase + 'icon57.png'
       },
       Help: {
-          icon: iconBase + 'icon7.png'
+        icon: iconBase + 'icon7.png'
       },
       Event: {
-          icon: iconBase + "icon13.png"
+        icon: iconBase + "icon13.png"
       },
       Charity: {
-          icon: iconBase + "icon10.png"
+        icon: iconBase + "icon10.png"
+      },
+      Books: {
+        icon: iconBase + "icon31.png"
       }
   };
 

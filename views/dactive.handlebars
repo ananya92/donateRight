@@ -1,14 +1,27 @@
-<ul>
-  {{#each dbDonations}}
-  <li data-id={{dataValues.id}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
-    <p>This is the description: {{dataValues.description}}</p>
-    <p>Category: {{dataValues.category}}</p>
-    <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td>
-    <a style='cursor:pointer;color:red' class='delete-donation'>Delete Donation</a></td>
-  </li>
-  <hr>  
-  {{/each}}
-</ul>
+<div id="event-list" class="box">
+  <article class="panel is-primary">
+      <p class="panel-heading .has-text-centered">
+          Active Donations:
+      </p>
+      <br>
+      <aside class="menu">
+          <ul class="menu-list">
+              {{#each dbDonations}}
+              <div class="box">
+                  <li data-id={{dataValues.id}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
+                      <div class="content is-small">
+                          <h2>Description: {{dataValues.description}}</h2>
+                          <h2>Category: {{dataValues.category}}</h2>
+                          <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td>
+                          <a style='cursor:pointer;color:red' class='delete-donation'>Delete Donation</a></td>
+                      </div>
+                  </li>
+              </div>
+              {{/each}}
+          </ul>
+      </aside>
+  </article>
+</div>
 
 <script src="assets/js/dActive.js"></script>
 <script src="assets/js/map.js"></script>
