@@ -11,7 +11,7 @@ module.exports = function(app) {
       res.json(dbUser);
     })
   });
-
+  /*
   app.get("/api/event/:id", function(req, res) {
     // route to get data about a particular event
     db.Events.findOne({
@@ -22,7 +22,7 @@ module.exports = function(app) {
       res.json(dbEvents);
     })
   });
-
+*/
   app.get("/api/donation/:id", function(req, res) {
     // route to get data about a particular donation
     db.Donations.findOne({
@@ -66,10 +66,12 @@ module.exports = function(app) {
         events: dbEvents.map(event => {
           return {
             name: event.name,
-            description: event.description
+            description: event.description,
+            id: event.id,
+            charityId: event.CharityId
           }
         })
-      }
+      };
       if (req.user) {
         if(req.user.type == "charity") {
           res.render("listEvents", {
@@ -214,5 +216,26 @@ module.exports = function(app) {
       .catch(function(err) {
         res.status(401).json(err);
       });
+  });
+
+  app.get("/api/event/:id", function(req, res) {
+    // route to get data about a particular event
+    db.Events.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [db.Charity]
+    }).then(function(data) {
+      const context = {
+          name: data.name,
+          description: data.description,
+          charityName: data.Charity.name,
+          charityDesc: data.Charity.description,
+          contact: data.Charity.phoneNumber,
+          email: data.Charity.email
+      }
+      res.json(context);
+      res.end();
+    })
   });
 };
