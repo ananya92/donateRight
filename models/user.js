@@ -35,6 +35,22 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         }
     });
+    
+    User.associate = function(models) {
+        User.hasMany(models.Donations, {
+            foreignKey: {
+              allowNull: false
+            }
+        });
+    };
+
+    User.associate = function(models) {
+        User.hasMany(models.DonationHistory, {
+            foreignKey: {
+              allowNull: false
+            }
+        });
+    };
 
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);

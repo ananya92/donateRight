@@ -1,20 +1,21 @@
 module.exports = function(sequelize, DataTypes) {
     var EventHistory = sequelize.define("EventHistory", {
-        name: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        description: {
+        charityKey: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
 
     EventHistory.associate = function(models) {
-        EventHistory.belongsTo(models.Events, {
+        EventHistory.belongsTo(models.Charity, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          onDelete: "cascade"
         });
     };
 

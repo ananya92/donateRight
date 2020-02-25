@@ -1,0 +1,13 @@
+<ul>
+  {{#each dbEvents}}
+  <li data-id={{dataValues.id}}>
+    <p>This is the description: {{dataValues.description}}</p>
+    {{!-- <p>Category: {{dataValues.category}}</p> --}}
+    <!--Add a show on map button-->
+    <a style='cursor:pointer;color:red' class='delete-event'>Delete Event</a></td>
+  </li>
+  <hr>  
+  {{/each}}
+</ul>
+
+<script src="assets/js/eActive.js"></script>
