@@ -91,7 +91,6 @@ module.exports = function(app) {
 
   // logging in a user
   app.post("/api/login", function(req, res, next) {
-    console.log(req.body);
     if(req.body.charityKey) {
       db.User.update({ type: "charity" }, {
         where: {
@@ -99,7 +98,6 @@ module.exports = function(app) {
         }
       })
       .then(function(dbUser) {
-        //authenticating after updating the user
         passport.authenticate('local', function(err, user, info) {
           if (err) { return next(err); }
           if (!user) { return res.redirect('/login'); }
@@ -175,7 +173,7 @@ module.exports = function(app) {
     })
       .then(function() {
         //add a thank you message
-        res.redirect('/user') //need to fix, not finding address, maybe something to do with handlebars
+        res.redirect('/user');
         
       })
       .catch(function(err) {
