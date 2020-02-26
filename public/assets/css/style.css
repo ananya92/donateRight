@@ -36,3 +36,13 @@ html, body {
     max-width: 100%;
     height: auto;
 } 
+
+.panel-heading {
+    font-size: 1.25rem;
+}
+
+.button {
+    padding: 0 12px;
+    margin-top: 5px;
+    height: 2em;
+}
