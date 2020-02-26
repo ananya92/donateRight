@@ -41,8 +41,8 @@ html, body {
     font-size: 1.25rem;
 }
 
-.button {
+#dropdownButton {
     padding: 0 12px;
-    margin-top: 5px;
     height: 2em;
+    margin-top: 7px;
 }

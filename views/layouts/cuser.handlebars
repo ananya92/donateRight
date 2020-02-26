@@ -16,7 +16,9 @@
                 <a class="navbar-item is-size-2 has-text-primary has-text-weight-semibold is-family-primary" href="/">
                 Donate Right
                 </a>
-
+                <div class="navbar-item">
+                    Welcome&nbsp;<span class="member-name"></span>!
+                </div>
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarDonateRight">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -25,87 +27,79 @@
             </div>
 
             <div id="navbarDonateRight" class="navbar-menu">
-                <div class="navbar-start">
-                <!--Can add the charity name to be inputed from javascript-->
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Menu
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/event">
-                            Post new event
-                        </a>
-                        <a class="navbar-item" href="/active-events">
-                            Active events
-                        </a>
-                        <a class="navbar-item" href="/cuserhistory">
-                            View event history
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/list-events">
-                            List view - all charity events
-                        </a>
-                        <a class="navbar-item" href="/list-donations">
-                            List view - all donation posts
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/charity"> 
-                            Charity settings
-                        </a>
-                    </div>
-                </div>
-                </div>
-
                 <div class="navbar-end">
-                <div class="navbar-item">
-                    Welcome <span class="member-name"></span>!
-                </div>
-                <div class="navbar-item  has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Filter
-                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                        Menu
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="/event">
+                                Post new event
+                            </a>
+                            <a class="navbar-item" href="/active-events">
+                                Active events
+                            </a>
+                            <a class="navbar-item" href="/cuserhistory">
+                                View event history
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="/list-events">
+                                List view - all charity events
+                            </a>
+                            <a class="navbar-item" href="/list-donations">
+                                List view - all donation posts
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="/charity"> 
+                                Charity settings
+                            </a>
+                        </div>
+                    </div>
+                    <div class="navbar-item  has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                        Filter
+                        </a>
 
-                    <div class="navbar-dropdown viewIcons">
-                        <a class="navbar-item" value="">
-                            All
-                        </a>
-                        <a class="navbar-item" value="Charity">
-                            Charities
-                        </a>
-                        <a class="navbar-item" value="Event">
-                            Events
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" value="Donation">
-                            Donations
-                        </a>
-                        <ul>
-                            <li><a class="navbar-item" value="Food">
-                            - Food
-                            </a></li>
-                            <li><a class="navbar-item" value="Books">
-                            - Books
-                            </a></li>
-                            <li><a class="navbar-item" value="Clothes">
-                            - Clothes
-                            </a></li>
-                            <li><a class="navbar-item" value="Homeware">
-                            - Homeware
-                            </a></li>
-                            <li><a class="navbar-item" value="Help">
-                            - Help
-                            </a></li>
-                        </ul>
+                        <div class="navbar-dropdown viewIcons">
+                            <a class="navbar-item" value="">
+                                All
+                            </a>
+                            <a class="navbar-item" value="Charity">
+                                Charities
+                            </a>
+                            <a class="navbar-item" value="Event">
+                                Events
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" value="Donation">
+                                Donations
+                            </a>
+                            <ul>
+                                <li><a class="navbar-item" value="Food">
+                                - Food
+                                </a></li>
+                                <li><a class="navbar-item" value="Books">
+                                - Books
+                                </a></li>
+                                <li><a class="navbar-item" value="Clothes">
+                                - Clothes
+                                </a></li>
+                                <li><a class="navbar-item" value="Homeware">
+                                - Homeware
+                                </a></li>
+                                <li><a class="navbar-item" value="Help">
+                                - Help
+                                </a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="navbar-item">
-                    <div class="buttons">
-                    <a class="button is-light" href="/logout">
-                        Logout
-                    </a>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                        <a class="button is-light" href="/logout">
+                            Logout
+                        </a>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </nav>
