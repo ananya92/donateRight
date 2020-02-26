@@ -42,7 +42,7 @@ function updateCharity(name, phone, email, description) {
         }
     })
     .then(function() {
-        window.location.replace("/charity");
+        window.location.replace("/user");
     }) // If there's an error, log the error
     .catch(function(err) {
         console.log(err);

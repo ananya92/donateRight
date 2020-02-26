@@ -207,6 +207,7 @@ module.exports = function(app) {
 			charityKey: req.body.charityKey
 		})
       	.then(function() {
+			res.status(200);
         	res.redirect('/login');
       	})
       	.catch(function(err) {
@@ -224,6 +225,7 @@ module.exports = function(app) {
 			description: req.body.description
     	})
       	.then(function() {
+			res.status(200);
         	res.redirect('/register');
       	})
       	.catch(function(err) {
@@ -243,7 +245,8 @@ module.exports = function(app) {
 				CharityId: dbCharity.dataValues.id
       		})
       		.then(function(dbEvent) {
-        		console.log("success");
+				console.log("Successfully created new event");
+				res.status(200).end();
       		})
       		.catch(function(err) {
         		res.status(401).json(err);
@@ -264,7 +267,7 @@ module.exports = function(app) {
             CharityId: dbCharity.dataValues.id
       		})
       		.then(function() {
-        		console.log("success as well");
+				res.status(200).end();
       		})
       		.catch(function(err) {
         		res.status(401).json(err);
@@ -286,7 +289,8 @@ module.exports = function(app) {
     	})
       	.then(function() {
         	//add a thank you message
-        	console.log("success");
+			console.log("Successfully created new donation");
+			res.status(200).end();
       	})
       	.catch(function(err) {
         	res.status(401).json(err);
@@ -302,7 +306,7 @@ module.exports = function(app) {
     	})
       	.then(function() {
         	//add a thank you message
-        	console.log("success as well");
+			res.status(200).end();
       	})
       	.catch(function(err) {
         	res.status(401).json(err);
@@ -325,7 +329,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("success");
+			  console.log("Successfullt updated charity details");
+			  res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);
@@ -343,7 +348,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("successfully updated user's charityKeys");
+			  console.log("Successfully updated user's charityKeys");
+			  res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);
@@ -364,7 +370,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("successfully updated user");
+			console.log("Successfully updated user");
+			res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);

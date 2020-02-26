@@ -127,6 +127,7 @@ function createDonation(description, category, lat, lng) {
     })
     .then(function() {
         console.log("success");
+        window.location.replace("/user");   
     }) // If there's an error with ajax, log the error
     .catch(function(err) {
     console.log(err);
