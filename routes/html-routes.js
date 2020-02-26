@@ -196,4 +196,82 @@ module.exports = function(app) {
       });
     }
   });
+
+  // list-donations route loads list view of all donations
+  app.get("/list-donations", function(req, res) {
+    var category = req.query.category;
+    //If category has been passed as query string then get only posts belonging to that category from the database
+    if(category) {
+      db.Donations.findAll({
+        where: {
+          category: category
+        }
+      }).then(function(dbDonations) {
+        const context = {
+          donations: dbDonations.map(donation => {
+            return {
+              category: donation.category,
+              description: donation.description,
+              id: donation.id,
+            }
+          })
+        };
+        if (req.user) {
+          if(req.user.type == "charity") {
+            res.render("listDonations", {
+              donations: context.donations,
+              category: category,
+              layout: "cuser.handlebars"
+            });
+          }
+          else {
+            res.render("listDonations", {
+              donations: context.donations,
+              category: category,
+              layout: "user.handlebars"
+            });
+          }
+        }
+        else {
+          res.render("listDonations", {
+            donations : context.donations,
+            category: category,
+          });
+        }
+      });
+    }
+    else {
+      //Category has not been sent as query string, get all donation posts from database
+      db.Donations.findAll({ }).then(function(dbDonations){
+        const context = {
+          donations: dbDonations.map(donation => {
+            return {
+              category: donation.category,
+              description: donation.description,
+              id: donation.id,
+            }
+          })
+        };
+        if (req.user) {
+          if(req.user.type == "charity") {
+            res.render("listDonations", {
+              donations: context.donations,
+              layout: "cuser.handlebars"
+            });
+          }
+          else {
+            res.render("listDonations", {
+              donations: context.donations,
+              layout: "user.handlebars"
+            });
+          }
+        }
+        else {
+          res.render("listDonations", {
+            donations : context.donations
+          });
+        }
+      });
+    }
+  });
 };

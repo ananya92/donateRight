@@ -92,41 +92,6 @@ module.exports = function(app) {
       });
     });
   });
-  
-  // list-donations route loads list view of all donations
-  app.get("/list-donations", function(req, res) {
-    db.Donations.findAll({ }).then(function(dbDonations){
-      const context = {
-        donations: dbDonations.map(donation => {
-          return {
-            category: donation.category,
-            description: donation.description,
-            id: donation.id,
-          }
-        })
-      };
-      if (req.user) {
-        if(req.user.type == "charity") {
-          res.render("listDonations", {
-            donations: context.donations,
-            layout: "cuser.handlebars"
-          });
-        }
-        else {
-          res.render("listDonations", {
-            donations: context.donations,
-            layout: "user.handlebars"
-          });
-        }
-      }
-      else {
-        res.render("listDonations", {
-          donations : context.donations
-        });
-      }
-    });
-  });
-
 
   // route to get list of all events
   app.get("/api/user", function(req, res) {
@@ -422,48 +387,6 @@ module.exports = function(app) {
       }
     }).then(function(dbCharity) {
       res.json(dbCharity);
-    });
-  });
-
-  //route to get donations by category
-  app.get("/api/donation/category/:category", function(req, res) {
-    db.Donations.findAll({
-      where: {
-        category: req.params.category
-      }
-    }).then(function(dbDonations) {
-      res.render(dbDonations);
-      const context = {
-        donations: dbDonations.map(donation => {
-          return {
-            category: donation.category,
-            description: donation.description,
-            id: donation.id,
-          }
-        })
-      };
-      if (req.user) {
-        if(req.user.type == "charity") {
-          res.render("listDonations", {
-            donations: context.donations,
-            category: req.params.category,
-            layout: "cuser.handlebars"
-          });
-        }
-        else {
-          res.render("listDonations", {
-            donations: context.donations,
-            category: req.params.category,
-            layout: "user.handlebars"
-          });
-        }
-      }
-      else {
-        res.render("listDonations", {
-          donations : context.donations,
-          category: req.params.category,
-        });
-      }
     });
   });
 };
