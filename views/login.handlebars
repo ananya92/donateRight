@@ -1,62 +1,59 @@
-<article class="panel is-primary">
-    <p class="panel-heading .has-text-centered">
-        Login
-    </p>
-    <br>
-    <br>
-    <form class="login">
-        <div id="login">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Enter user details</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input id="email-input" class="input" type="text" required placeholder="john.doe@gmail.com">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                            </span>
-                        </p>
+<div class="box">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            Login
+        </p>
+        <form class="login">
+            <div id="login" class="box">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Enter user details</label>
                     </div>
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input  id="password-input" class="input" type="password" required placeholder="********">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
+                    <div class="field-body">
                         <div class="field">
-                            <p class="control is-expanded">
-                            <input class="input" id="charityKey-input" type="password" placeholder="********">
+                            <p class="control is-expanded has-icons-left">
+                                <input id="email-input" class="input" type="text" required placeholder="john.doe@gmail.com">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
                             </p>
                         </div>
-                        <p class="help">Only for Charity Users</p>
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input  id="password-input" class="input" type="password" required placeholder="********">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="field">
+                                <p class="control is-expanded">
+                                <input class="input" id="charityKey-input" type="password" placeholder="********">
+                                </p>
+                            </div>
+                            <p class="help">Only for Charity Users</p>
+                        </div>
                     </div>
                 </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-primary">
+                            Submit
+                            </button>
+                            <p class="help" id="errorMsg"></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="has-text-centered">Or sign up <a href="/register">here</a></p>
             </div>
-            <br>
-            <div class="field is-horizontal">
-                <div class="field-label">
-                    <!-- Left empty for spacing -->
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-primary">
-                        Submit
-                        </button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <br>
-    <p class="has-text-centered">Or sign up <a href="/register">here</a></p>
-    <br>
-</article>
-
+        </form>
+    </article>
+</div>
 <script src="assets/js/login.js"></script>

@@ -36,3 +36,13 @@ html, body {
     max-width: 100%;
     height: auto;
 } 
+
+.panel-heading {
+    font-size: 1.25rem;
+}
+
+#dropdownButton {
+    padding: 0 12px;
+    height: 2em;
+    margin-top: 7px;
+}

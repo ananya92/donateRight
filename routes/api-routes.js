@@ -36,12 +36,12 @@ module.exports = function(app) {
       		include: [db.Charity]
     	}).then(function(data) {
       		const context = {
-          		name: data.name,
-				description: data.description,
-				charityName: data.Charity.name,
-				charityDesc: data.Charity.description,
-				contact: data.Charity.phoneNumber,
-				email: data.Charity.email
+          		title: data.title,
+              description: data.description,
+              charityName: data.Charity.name,
+              charityDesc: data.Charity.description,
+              contact: data.Charity.phoneNumber,
+              email: data.Charity.email
       		}
       		res.json(context);
       		res.end();
@@ -90,56 +90,33 @@ module.exports = function(app) {
     	})
   	});
 
-  	// route to get data about location markers
-  	app.get("/api/markers", function(req, res) {
-    	db.Donations.findAll({include: [db.User]}).then(function(dbDonations) {
-      		db.Charity.findAll({}).then(function(dbCharity){
-        		db.Events.findAll({include: [db.Charity]}).then(function(dbEvents) {
-          			var data= {
-						donation: dbDonations,
-						charity: dbCharity,
-						event: dbEvents
-          			}
-          			res.json(data);
-        		});
-      		});
-    	});
-  	});
-  
-  	// list-donations route loads list view of all donations
-  	app.get("/list-donations", function(req, res) {
-    	db.Donations.findAll({ }).then(function(dbDonations){
-      		const context = {
-        		donations: dbDonations.map(donation => {
-					return {
-						category: donation.category,
-						description: donation.description,
-						id: donation.id,
-					}
-        		})
-      		};
-			if (req.user) {
-				if(req.user.type == "charity") {
-					res.render("listDonations", {
-						donations: context.donations,
-						layout: "cuser.handlebars"
-					});
-				}
-				else {
-					res.render("listDonations", {
-						donations: context.donations,
-						layout: "user.handlebars"
-					});
-				}
-			}
-			else {
-				res.render("listDonations", {
-					donations : context.donations
-				});
-			}
-    	});
-  	});
+  // route to get data about the charity linked to the active user
+  app.get("/api/active", function(req, res) {
+    db.Charity.findOne({
+      where: {
+        charityKey: req.session.passport.user.charityKey
+      }
+    }).then(function(dbCharity) {
+      res.json(dbCharity);
+    })
+  });
 
+  // route to get data about location markers
+  app.get("/api/markers", function(req, res) {
+    
+    db.Donations.findAll({include: [db.User]}).then(function(dbDonations) {
+      db.Charity.findAll({}).then(function(dbCharity){
+        db.Events.findAll({include: [db.Charity]}).then(function(dbEvents) {
+          var data= {
+            donation: dbDonations,
+            charity: dbCharity,
+            event: dbEvents
+          }
+          res.json(data);
+        });
+      });
+    });
+  });
 
   	// route to get list of all events
   	app.get("/api/user", function(req, res) {
@@ -230,6 +207,7 @@ module.exports = function(app) {
 			charityKey: req.body.charityKey
 		})
       	.then(function() {
+			res.status(200);
         	res.redirect('/login');
       	})
       	.catch(function(err) {
@@ -247,6 +225,7 @@ module.exports = function(app) {
 			description: req.body.description
     	})
       	.then(function() {
+			res.status(200);
         	res.redirect('/register');
       	})
       	.catch(function(err) {
@@ -258,6 +237,7 @@ module.exports = function(app) {
   	app.post("/api/event", function(req, res) {
     	db.Charity.findOne({where: {charityKey: req.session.passport.user.charityKey}}).then(function(dbCharity) {
       		db.Events.create({
+        title: req.body.title,
 				description: req.body.description,
 				lat: req.body.lat,
 				lng: req.body.lng,
@@ -265,7 +245,8 @@ module.exports = function(app) {
 				CharityId: dbCharity.dataValues.id
       		})
       		.then(function(dbEvent) {
-        		console.log("success");
+				console.log("Successfully created new event");
+				res.status(200).end();
       		})
       		.catch(function(err) {
         		res.status(401).json(err);
@@ -280,12 +261,13 @@ module.exports = function(app) {
   	app.post("/api/eventHistory", function(req, res) {
     	db.Charity.findOne({where: {charityKey: req.session.passport.user.charityKey}}).then(function(dbCharity) {
       		db.EventHistory.create({
-				description: req.body.description,
-				charityKey: req.session.passport.user.charityKey,
-				CharityId: dbCharity.dataValues.id
+            title: req.body.title,
+            description: req.body.description,
+            charityKey: req.session.passport.user.charityKey,
+            CharityId: dbCharity.dataValues.id
       		})
       		.then(function() {
-        		console.log("success as well");
+				res.status(200).end();
       		})
       		.catch(function(err) {
         		res.status(401).json(err);
@@ -307,7 +289,8 @@ module.exports = function(app) {
     	})
       	.then(function() {
         	//add a thank you message
-        	console.log("success");
+			console.log("Successfully created new donation");
+			res.status(200).end();
       	})
       	.catch(function(err) {
         	res.status(401).json(err);
@@ -323,7 +306,7 @@ module.exports = function(app) {
     	})
       	.then(function() {
         	//add a thank you message
-        	console.log("success as well");
+			res.status(200).end();
       	})
       	.catch(function(err) {
         	res.status(401).json(err);
@@ -346,7 +329,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("success");
+			  console.log("Successfullt updated charity details");
+			  res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);
@@ -364,7 +348,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("successfully updated user's charityKeys");
+			  console.log("Successfully updated user's charityKeys");
+			  res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);
@@ -385,7 +370,8 @@ module.exports = function(app) {
       		}
     	})
     	.then(function() {
-      		console.log("successfully updated user");
+			console.log("Successfully updated user");
+			res.status(200).end();
     	})
     	.catch(function(err) {
       		res.status(401).json(err);
@@ -438,45 +424,16 @@ module.exports = function(app) {
     	});
   	});
 
-  	//route to get donations by category
-  	app.get("/api/donation/category/:category", function(req, res) {
-    	db.Donations.findAll({
-      		where: {
-        		category: req.params.category
-      		}
-    	}).then(function(dbDonations) {
-      		res.render(dbDonations);
-      		const context = {
-        		donations: dbDonations.map(donation => {
-          			return {
-						category: donation.category,
-						description: donation.description,
-						id: donation.id,
-          			}
-        		})
-      		};
-      		if (req.user) {
-        		if(req.user.type == "charity") {
-          			res.render("listDonations", {
-						donations: context.donations,
-						category: req.params.category,
-						layout: "cuser.handlebars"
-          			});
-        		}
-        		else {
-          			res.render("listDonations", {
-						donations: context.donations,
-						category: req.params.category,
-						layout: "user.handlebars"
-          			});
-        		}
-      		}
-      		else {
-        		res.render("listDonations", {
-					donations : context.donations,
-					category: req.params.category,
-        		});
-      		}
-    	});
-  	});
+  // Route for getting some data about our user to be used client side
+  app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the username
+      res.json({
+        username: req.session.passport.user.firstName,
+      });
+    }
+  });
 };

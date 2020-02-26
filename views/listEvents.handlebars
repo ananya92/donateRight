@@ -1,6 +1,6 @@
 <div id="event-list" class="box">
     <article class="panel is-primary">
-        <p class="panel-heading .has-text-centered">
+        <p class="panel-heading">
             List of all charity events:
         </p>
         <br>
@@ -11,7 +11,7 @@
                     <a>
                         <li data-id={{this.id}} data-charityId={{this.charityId}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
                             <div class="content is-small">
-                                <h2>{{this.name}}</h2>
+                                <h2>{{this.title}}</h2>
                                 <p>{{this.description}}</h2>
                                 {{!-- <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td> --}}
                             </div>
@@ -25,7 +25,7 @@
 </div>
 <div id="event-details" class="box is-hidden">
     <article class="panel is-primary">
-        <p class="panel-heading .has-text-centered">
+        <p class="panel-heading">
             Event details:
         </p>
         <br>

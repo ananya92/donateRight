@@ -28,7 +28,31 @@ $(document).ready(function() {
         location.reload();
     });
 
+    // On filtering results by category, call list-donations API with a query parameter
     $(".dropdown-item").on("click", function() {
-        window.location.href("/api/donation/category/" + $(this).text());
+        var category = $(this).text().trim();
+        if(category === "All") {
+            window.location.href = "/list-donations";
+        }
+        else {
+            window.location.href = "/list-donations?category=" + category;
+        }
     });
+
+    var alterClass = function() {
+        var ww = document.body.clientWidth;
+        if (ww < 600) {
+            $('.heading-with-filter').removeClass('is-pulled-left');
+            $('.dropdown').removeClass('is-pulled-right');
+        } else if (ww >= 600) {
+            $('.heading-with-filter').addClass('is-pulled-left');
+            $('.dropdown').addClass('is-pulled-right');
+        };
+    };
+
+    $(window).resize(function(){
+        alterClass();
+    });
+    //Fire when the page first loads to set the float of the components based on screen size
+    alterClass();
 });

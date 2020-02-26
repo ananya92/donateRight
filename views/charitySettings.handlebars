@@ -1,92 +1,94 @@
-<article class="panel is-primary">
-    <p class="panel-heading .has-text-centered">
-        Updating Charity Information
-    </p>
-    <br>
-    <div class="has-text-centered">
-        <a id="setLocation" href="/location">SET LOCATION</a>
-    </div>
-    <br>
-    <form class="updateInfo">
-        <div id="cRegistration">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Enter new details</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input id="charityName-input" class="input" type="text" placeholder="Charity Name">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-university"></i>
-                            </span>
-                        </p>
+<div class="box">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            Updating Charity Information
+        </p>
+        <br>
+        <div class="has-text-centered">
+            <a id="setLocation" href="/location">SET LOCATION</a>
+        </div>
+        <br>
+        <form class="updateInfo">
+            <div id="cRegistration" class="box">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Enter new details</label>
                     </div>
-                    <div class="field is-expanded">
-                        <div class="field has-addons">
-                            <p class="control">
-                            <a class="button is-static">
-                                +61
-                            </a>
-                            </p>
-                            <p class="control is-expanded">
-                            <input class="input" id="phoneNumber-input" type="tel" placeholder="Contact number">
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input id="charityName-input" class="input" type="text" placeholder="Charity Name">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-university"></i>
+                                </span>
                             </p>
                         </div>
-                        <p class="help">Do not enter the first zero</p>
+                        <div class="field is-expanded">
+                            <div class="field has-addons">
+                                <p class="control">
+                                <a class="button is-static">
+                                    +61
+                                </a>
+                                </p>
+                                <p class="control is-expanded">
+                                <input class="input" id="phoneNumber-input" type="tel" placeholder="Contact number">
+                                </p>
+                            </div>
+                            <p class="help">Do not enter the first zero</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                                <input class="input is-success" id="email-input" type="email" placeholder="alex@smith.com">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Description</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" id="description-input" placeholder="Brief description of charity's mission, activities etc."></textarea>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div class="buttons">
+                                    <button type="submit" class="button is-primary">
+                                        Update
+                                    </button>
+                                    <button type="submit" class="button is-danger delete-charity">
+                                        Delete Charity
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left has-icons-right">
-                            <input class="input is-success" id="email-input" type="email" placeholder="alex@smith.com">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Description</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                    <div class="control">
-                        <textarea class="textarea" id="description-input" placeholder="Brief description of charity's mission, activities etc."></textarea>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label">
-                    <!-- Left empty for spacing -->
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-primary">
-                        Update
-                        </button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <br>
-    <div class="has-text-centered">
-        <a style='cursor:pointer;color:red' class='delete-charity '>Delete Charity</a></td>
-    </div>
-    <br>
-</article>
+        </form>
+    </article>
+</div>
 
 <script src="assets/js/settings.js"></script>

@@ -1,87 +1,89 @@
-<article class="panel is-primary">
-    <p class="panel-heading .has-text-centered">
-        Updating User Information
-    </p>
-    <br>
-    <form class="updateInfo">
-        <div id="cRegistration">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Enter new details</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input id="firstName-input" class="input" type="text" placeholder="First Name">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-university"></i>
-                            </span>
-                        </p>
+<div class="box">
+    <article class="panel is-primary">
+        <p class="panel-heading .has-text-centered">
+            Updating User Information
+        </p>
+        <br>
+        <form class="updateInfo">
+            <div id="cRegistration" class="box">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Enter new details</label>
                     </div>
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                            <input id="lastName-input" class="input" type="text" placeholder="Last Name">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-university"></i>
-                            </span>
-                        </p>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input id="firstName-input" class="input" type="text" placeholder="First Name">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input id="lastName-input" class="input" type="text" placeholder="Last Name">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>        
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                    </div>
+                    <div class="field-body">
+                        <div class="field has-addons">
+                            <p class="control">
+                            <a class="button is-static">
+                                +61
+                            </a>
+                            </p>
+                            <p class="control">
+                            <input class="input" id="phoneNumber-input" type="tel" placeholder="Contact number">
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>        
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                                <input class="input is-success" id="email-input" type="email" placeholder="alex@smith.com">
+                                <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="field-body">
-                    <div class="field has-addons">
-                        <p class="control">
-                        <a class="button is-static">
-                            +61
-                        </a>
-                        </p>
-                        <p class="control">
-                        <input class="input" id="phoneNumber-input" type="tel" placeholder="Contact number">
-                        </p>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div class="buttons">
+                                    <button type="submit" class="button is-primary">
+                                        Update
+                                    </button>
+                                    <button type="submit" class="button is-danger delete-user">
+                                        Delete User
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded has-icons-left has-icons-right">
-                            <input class="input is-success" id="email-input" type="email" placeholder="alex@smith.com">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label">
-                    <!-- Left empty for spacing -->
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-primary">
-                        Update
-                        </button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <br>
-    <div class="has-text-centered">
-        <a style='cursor:pointer;color:red' class='delete-user '>Delete User</a></td>
-    </div>
-    <br>
-</article>
+        </form>
+    </article>
+</div>
 
 <script src="assets/js/userSettings.js"></script>
