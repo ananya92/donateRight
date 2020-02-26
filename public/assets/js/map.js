@@ -39,7 +39,13 @@ $(document).on("click", ".viewIcons", function(event) {
       		break;
     	default:
       		return userSelection = "";
-  	}
+	  }
+	  if(userSelection === "") {
+		  $("#selected-filter").text("Filter");
+	  }
+	  else {
+		$("#selected-filter").text(userSelection);
+	  }
   	initMap(); //render map again if user changes selection
 });
 

@@ -1,6 +1,55 @@
 <!--Copy this to anywhere that the map is needed with donations on it-->
+<article class="panel is-primary" style="margin-bottom: 0px;">
+    <div class="panel-heading is-clearfix">
+        <span class="dropdown is-pulled-right is-hoverable">
+            <div class="dropdown-trigger">
+                <button class="button" id="dropdownButton" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="selected-filter">Filter</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content viewIcons">
+                    <a class="dropdown-item">
+                        All
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Charities
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Events
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Donations
+                    </a>
+                    <ul>
+                        <li><a class="dropdown-item" value="Food">
+                        - Food
+                        </a></li>
+                        <li><a class="dropdown-item" value="Books">
+                        - Books
+                        </a></li>
+                        <li><a class="dropdown-item" value="Clothes">
+                        - Clothes
+                        </a></li>
+                        <li><a class="dropdown-item" value="Homeware">
+                        - Homeware
+                        </a></li>
+                        <li><a class="dropdown-item" value="Help">
+                        - Help
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </span>
+    </div>
+</article>
 <div id="map"></div>
-
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <!-- <script src="/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js"></script> -->
 <script src="assets/js/map.js"></script>
