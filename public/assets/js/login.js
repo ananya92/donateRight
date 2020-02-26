@@ -11,33 +11,46 @@ $(document).ready(function() {
       $.get("/api/user").then(function(data) {
         var charity = charityInput.val();
         var pass = data.find(element => element.email == emailInput.val());
-        if(pass.charityKey) { //add validation
-          if(charity == pass.charityKey && emailInput.val() == pass.email) {
-            var userData = {
-              email: emailInput.val().trim(),
-              password: passwordInput.val().trim(),
-              charityKey: charity
-            };
+        if(pass) {
+          // entered email ID is found in database
+          if(pass.charityKey) {
+            // The user record has a charity key
+            if(charity == pass.charityKey && emailInput.val() == pass.email) {
+              // Entered charity key matches with the charity key of user in database
+              var userData = {
+                email: emailInput.val().trim(),
+                password: passwordInput.val().trim(),
+                charityKey: charity
+              };
+            }
+            else {
+              // Entered charity key does not match with the charity key of user in database
+              emailInput.val("");
+              passwordInput.val("");
+              charityInput.val("");
+              $("#errorMsg").text("Invalid credentials! Try again!");
+              return;
+            }
           }
           else {
-            emailInput.val("");
-            passwordInput.val("");
-            charityInput.val("");
-            $("#errorMsg").text("Invalid credentials! Try again!");
-            return;
+            // The user record in database does not have a charity key so it is a regular user
+            userData = {
+              email: emailInput.val().trim(),
+              password: passwordInput.val().trim(),
+            };
           }
         }
         else {
-          userData = {
-            email: emailInput.val().trim(),
-            password: passwordInput.val().trim(),
-          };
+          // entered email ID is not found in database
+          emailInput.val("");
+          passwordInput.val("");
+          charityInput.val("");
+          $("#errorMsg").text("Invalid credentials! Try again!");
+          return;
         }
-    
         if (!userData.email || !userData.password) {
           return;
         }
-    
         // If we have an email and password we run the loginUser function and clear the form
         loginUser(userData.email, userData.password, userData.charityKey);
       });
@@ -45,17 +58,16 @@ $(document).ready(function() {
   
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(email, password, charityKey) {
-      	$.post("/api/login", {
-        	email: email,
-        	password: password,
-        	charityKey: charityKey
-      	})
-        .then(function() {
-          	window.location.replace("/user");
-         	 
-        })// If there's an error, log the error
-        .catch(function(err) {
-          	console.log(err);
-        });
+      $.post("/api/login", {
+        email: email,
+        password: password,
+        charityKey: charityKey
+      })
+      .then(function() {
+          window.location.replace("/user");
+      })// If there's an error, log the error
+      .catch(function(err) {
+          console.log(err);
+      });
     }
 });
