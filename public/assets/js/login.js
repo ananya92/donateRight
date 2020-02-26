@@ -10,8 +10,8 @@ $(document).ready(function() {
       event.preventDefault();
       $.get("/api/user").then(function(data) {
         var charity = charityInput.val();
-        if(charity.length>0) { //add validation
-          var pass = data.find(element => element.email == emailInput.val());
+        var pass = data.find(element => element.email == emailInput.val());
+        if(pass.charityKey) { //add validation
           if(charity == pass.charityKey && emailInput.val() == pass.email) {
             var userData = {
               email: emailInput.val().trim(),
@@ -23,7 +23,7 @@ $(document).ready(function() {
             emailInput.val("");
             passwordInput.val("");
             charityInput.val("");
-            $("#errorMsg").text("Incorrect Login");
+            $("#errorMsg").text("Invalid credentials! Try again!");
             return;
           }
         }
