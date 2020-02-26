@@ -15,7 +15,7 @@ $(document).ready(function() {
                 console.log(data);
                 eventList.addClass("is-hidden");
                 eventDetails.removeClass("is-hidden");
-                $("#ename").text(data.name);
+                $("#ename").text(data.title);
                 $("#edescription").text(data.description);
                 $("#cname").text(data.charityName);
                 $("#cdescription").text(data.charityDesc);

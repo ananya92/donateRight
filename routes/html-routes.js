@@ -149,7 +149,7 @@ module.exports = function(app) {
       const context = {
         events: dbEvents.map(event => {
           return {
-            name: event.name,
+            title: event.title,
             description: event.description,
             id: event.id,
             charityId: event.CharityId

@@ -36,12 +36,12 @@ module.exports = function(app) {
       		include: [db.Charity]
     	}).then(function(data) {
       		const context = {
-          		name: data.name,
-				description: data.description,
-				charityName: data.Charity.name,
-				charityDesc: data.Charity.description,
-				contact: data.Charity.phoneNumber,
-				email: data.Charity.email
+          		title: data.title,
+              description: data.description,
+              charityName: data.Charity.name,
+              charityDesc: data.Charity.description,
+              contact: data.Charity.phoneNumber,
+              email: data.Charity.email
       		}
       		res.json(context);
       		res.end();
@@ -235,6 +235,7 @@ module.exports = function(app) {
   	app.post("/api/event", function(req, res) {
     	db.Charity.findOne({where: {charityKey: req.session.passport.user.charityKey}}).then(function(dbCharity) {
       		db.Events.create({
+        title: req.body.title,
 				description: req.body.description,
 				lat: req.body.lat,
 				lng: req.body.lng,
@@ -257,9 +258,10 @@ module.exports = function(app) {
   	app.post("/api/eventHistory", function(req, res) {
     	db.Charity.findOne({where: {charityKey: req.session.passport.user.charityKey}}).then(function(dbCharity) {
       		db.EventHistory.create({
-				description: req.body.description,
-				charityKey: req.session.passport.user.charityKey,
-				CharityId: dbCharity.dataValues.id
+            title: req.body.title,
+            description: req.body.description,
+            charityKey: req.session.passport.user.charityKey,
+            CharityId: dbCharity.dataValues.id
       		})
       		.then(function() {
         		console.log("success as well");
