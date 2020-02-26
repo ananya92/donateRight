@@ -41,12 +41,12 @@ function updateCharity(name, phone, email, description) {
             description: description
         }
     })
-      .then(function() {
+    .then(function() {
         window.location.replace("/charity");
-      }) // If there's an error, log the error
-      .catch(function(err) {
+    }) // If there's an error, log the error
+    .catch(function(err) {
         console.log(err);
-      });
+    });
 }
 
 // Function for handling what happens when the delete button is pressed
@@ -54,9 +54,9 @@ function updateCharity(name, phone, email, description) {
 //second delete charity and linked all events 
 function handleDelete() {
     $.ajax({
-      method: "PUT",
-      url: "/api/userkeys",
-      data: null,
+        method: "PUT",
+        url: "/api/userkeys",
+        data: null,
     })
     .then(
         $.ajax({

@@ -4,26 +4,26 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-  // index route loads home page
-  app.get("/", function(req, res) {
-    if (req.user) {
-      // User has logged in
-      if(req.user.type == "charity") {
-        res.render("user-home", {
-          layout: "cuser.handlebars"
-        });
-      }
-      else {
-        res.render("user-home", {
-          layout: "user.handlebars"
-        });
-      }
-    }
-    else {
-      res.render("index");
-    }
-  });
+  	// Each of the below routes just handles the HTML page that the user gets sent to.
+  	// index route loads home page
+  	app.get("/", function(req, res) {
+    	if (req.user) {
+      		// User has logged in
+      		if(req.user.type == "charity") {
+        		res.render("user-home", {
+          			layout: "cuser.handlebars"
+        		});
+      		}
+      		else {
+        		res.render("user-home", {
+          			layout: "user.handlebars"
+        		});
+      		}
+    	}
+    	else {
+      		res.render("index");
+    	}
+  	});
   
   // user route loads home page after user logs-in
   app.get("/user", isAuthenticated, function(req, res) {

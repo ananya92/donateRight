@@ -5,8 +5,8 @@ $(document).on("click", ".delete-donation", handleDelete);
 function handleDelete() {
     var id = $(this).parent().data("id");
     $.ajax({
-      method: "DELETE",
-      url: "/api/donation/" + id
+    	method: "DELETE",
+    	url: "/api/donation/" + id
     })
-      .then(location.reload());
+    .then(location.reload());
 }

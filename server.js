@@ -28,14 +28,14 @@ app.use(express.static("public"));
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ 
-  defaultLayout: "main",
-  helpers:{
-    section: function(name, options){
-        if(!this._sections){this._sections = {}};
-        this._sections[name] = options.fn(this);
-        return null;
-    } 
-  }
+  	defaultLayout: "main",
+  	helpers:{
+    	section: function(name, options){
+        	if(!this._sections){this._sections = {}};
+        	this._sections[name] = options.fn(this);
+        	return null;
+    	} 
+  	}
 }));
 app.set("view engine", "handlebars");
 
@@ -52,7 +52,7 @@ require("./routes/html-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on http://localhost:" + PORT);
-  });
+  	app.listen(PORT, function() {
+    	console.log("App listening on http://localhost:" + PORT);
+  	});
 });

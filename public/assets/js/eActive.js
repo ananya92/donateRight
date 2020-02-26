@@ -4,8 +4,8 @@ $(document).on("click", ".delete-event", handleDelete);
 function handleDelete() {
     var id = $(this).parent().data("id");
     $.ajax({
-      method: "DELETE",
-      url: "/api/event/" + id
+      	method: "DELETE",
+      	url: "/api/event/" + id
     })
-      .then(location.reload());
+    .then(location.reload());
 }
