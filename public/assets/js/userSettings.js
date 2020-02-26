@@ -22,9 +22,7 @@ $(document).on('submit', '.updateInfo', function(event){
         phoneNumber: phoneInput.val().trim(),
         email: emailInput.val().trim()
     }
-
     console.log(userData);
-
     //ajax call and if successful returns the user to user settings
     updateUser(userData.firstName, userData.lastName, userData.phoneNumber, userData.email);    
 });
@@ -40,19 +38,19 @@ function updateUser(firstName, lastName, phone, email) {
             email: email
         }
     })
-      .then(function() {
+    .then(function() {
         window.location.replace("/user");
-      }) // If there's an error, log the error
-      .catch(function(err) {
+    }) // If there's an error, log the error
+    .catch(function(err) {
         console.log(err);
-      });
+    });
 }
 
 // Function for handling what happens when the delete button is pressed
 function handleDelete() {
     $.ajax({
-      method: "DELETE",
-      url: "/api/user/:id"
+      	method: "DELETE",
+      	url: "/api/user/:id"
     })
-      .then(window.location.replace("/logout"));
+    .then(window.location.replace("/logout"));
 }

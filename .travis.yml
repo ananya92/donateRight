@@ -1,13 +1,13 @@
 language: node_js
 node_js: "12"
 branches:
-  only:
-    - master
+  	only:
+    	- master
 cache:
-  directories:
-    - node_modules
+  	directories:
+   		- node_modules
 deploy:
-  provider: heroku
-  api_key:
-    secure: "cbd1a56f-99bc-4a82-a631-ab85ed1fd504"
-  app: donateright
+  	provider: heroku
+  	api_key:
+    	secure: "0d805bb3-241c-47c8-8e28-82b6dd6fcca6"
+  	app: donateright

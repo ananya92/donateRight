@@ -1,9 +1,22 @@
-<ul>
-  {{#each dbDonations}}
-  <li data-id={{dataValues.id}}>
-    <p>This is the description: {{dataValues.description}}</p>
-    <p>Category: {{dataValues.category}}</p>
-  </li>
-  <hr>  
-  {{/each}}
-</ul>
+<div id="event-list" class="box">
+  <article class="panel is-primary">
+      <p class="panel-heading .has-text-centered">
+          Donation History:
+      </p>
+      <br>
+      <aside class="menu">
+          <ul class="menu-list">
+              {{#each dbDonations}}
+              <div class="box">
+                <li data-id={{dataValues.id}}>
+                    <div class="content is-small">
+                        <h2>Description: {{dataValues.description}}</h2>
+                        <h2>Category: {{dataValues.category}}</h2>
+                    </div>
+                </li>
+              </div>
+              {{/each}}
+          </ul>
+      </aside>
+  </article>
+</div>

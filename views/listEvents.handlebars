@@ -9,10 +9,11 @@
                 {{#each events}}
                 <div class="box">
                     <a>
-                        <li data-id={{this.id}} data-charityId={{this.charityId}}>
+                        <li data-id={{this.id}} data-charityId={{this.charityId}} data-lat={{dataValues.lat}} data-lng={{dataValues.lng}}>
                             <div class="content is-small">
                                 <h2>{{this.name}}</h2>
                                 <p>{{this.description}}</h2>
+                                {{!-- <a style='cursor:pointer;color:green' class='map-donation'>Show on Map</a></td> --}}
                             </div>
                         </li>
                     </a>
@@ -103,5 +104,6 @@
 {{!-- {{#section 'script'}} --}}
 
 <script type="application/javascript" src="assets/js/listEvent.js"></script>
+<script src="assets/js/map.js"></script>
 
 {{!-- {{/section}} --}}

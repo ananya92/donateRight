@@ -16,6 +16,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DECIMAL(9,6),
             allowNull: false
         }
+    },
+    {
+        freezeTableName: true
     });
 
     Donations.associate = function(models) {
