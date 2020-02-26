@@ -184,19 +184,6 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the username
-      res.json({
-        username: req.user.email,
-      });
-    }
-  });
-
   // list-donations route loads list view of all donations
   app.get("/list-donations", function(req, res) {
     var category = req.query.category;
