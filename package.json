@@ -1,34 +1,35 @@
 {
-  "name": "donateright",
-  "version": "1.0.0",
-  "description": "Donation platform bridging charities and donors",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EdwardEMC/donateRight.git"
-  },
-  "author": "Ananya-Edward-Stephanie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EdwardEMC/donateRight/issues"
-  },
-  "homepage": "https://github.com/EdwardEMC/donateRight#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "bulma": "^0.8.0",
-    "eslint": "^6.8.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "express-session": "^1.17.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "sequelize": "^5.21.4",
-    "sequelize-cli": "^5.5.1"
-  }
+		"name": "donateright",
+		"version": "1.0.0",
+		"description": "Donation platform bridging charities and donors",
+		"main": "server.js",
+		"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1",
+				"start": "node server.js"
+		},
+		"repository": {
+				"type": "git",
+				"url": "git+https://github.com/EdwardEMC/donateRight.git"
+		},
+		"author": "Ananya-Edward-Stephanie",
+		"license": "ISC",
+		"bugs": {
+				"url": "https://github.com/EdwardEMC/donateRight/issues"
+		},
+		"homepage": "https://github.com/EdwardEMC/donateRight#readme",
+		"dependencies": {
+				"bcryptjs": "^2.4.3",
+				"bulma": "^0.8.0",
+				"eslint": "^6.8.0",
+				"express": "^4.17.1",
+				"express-handlebars": "^3.1.0",
+				"express-session": "^1.17.0",
+				"heroku-cli": "^7.0.9",
+				"mysql": "^2.18.1",
+				"mysql2": "^2.1.0",
+				"passport": "^0.4.1",
+				"passport-local": "^1.0.0",
+				"sequelize": "^5.21.4",
+				"sequelize-cli": "^5.5.1"
+		}
 }

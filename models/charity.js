@@ -32,6 +32,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         }
+    },
+    {
+        freezeTableName: true
     });
     
     Charity.associate = function(models) {
