@@ -15,7 +15,11 @@ $(document).ready(function() {
           // entered email ID is found in database
           if(pass.charityKey) {
             // The user record has a charity key
-            if(charity == pass.charityKey && emailInput.val() == pass.email) {
+            if(charity === "") {
+              $("#errorMsg").text("Charity key cannot be blank for charity users!");
+              return;
+            }
+            else if(charity == pass.charityKey && emailInput.val() == pass.email) {
               // Entered charity key matches with the charity key of user in database
               var userData = {
                 email: emailInput.val().trim(),
@@ -45,7 +49,7 @@ $(document).ready(function() {
           emailInput.val("");
           passwordInput.val("");
           charityInput.val("");
-          $("#errorMsg").text("Invalid credentials! Try again!");
+          $("#errorMsg").text("Username does not exist!");
           return;
         }
         if (!userData.email || !userData.password) {

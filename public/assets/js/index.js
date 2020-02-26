@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
   
@@ -14,4 +13,21 @@ $(document).ready(function() {
     $.get("/api/user_data").then(function(data) {
         $(".member-name").text(data.username);
     });
+
+    var alterClass = function() {
+        var ww = document.body.clientWidth;
+        if (ww < 600) {
+            $('#welcome-mobile').removeClass('is-hidden');
+            $('#welcome-normal').addClass('is-hidden');
+        } else if (ww >= 600) {
+            $('#welcome-mobile').addClass('is-hidden');
+            $('#welcome-normal').removeClass('is-hidden');
+        };
+    };
+
+    $(window).resize(function(){
+        alterClass();
+    });
+    //Fire when the page first loads to set the float of the components based on screen size
+    alterClass();
   });
