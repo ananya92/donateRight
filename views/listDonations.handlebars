@@ -1,40 +1,48 @@
 <div id="donation-list" class="box">
     <article class="panel is-primary">
-        <p class="panel-heading .has-text-centered">
-            List of all donation posts:
-        </p>
-        <div class="dropdown is-right is-hoverable">
-            <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>Filter by Category</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-                </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                <a class="dropdown-item">
-                    Food
-                </a>
-                <hr class="dropdown-divider">
-                <a class="dropdown-item">
-                    Clothes
-                </a>
-                <hr class="dropdown-divider">
-                <a class="dropdown-item">
-                    Books
-                </a>
-                <hr class="dropdown-divider">
-                <a class="dropdown-item">
-                    Homeware
-                </a>
-                <hr class="dropdown-divider">
-                <a class="dropdown-item">
-                    Help
-                </a>
+        <div class="panel-heading is-clearfix">
+            <p class="heading-with-filter" style="padding-top:7px;">List of all donation posts:</p>
+            <span class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                        {{#if category}}
+                            <span>{{category}}</span>
+                        {{else}}
+                            <span>Filter by Category</span>
+                        {{/if}}
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                    </button>
                 </div>
-            </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                    <a class="dropdown-item">
+                        Food
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Clothes
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Books
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Homeware
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        Help
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item">
+                        All
+                    </a>
+                    </div>
+                </div>
+            </span>
         </div>
         <br>
         <aside class="menu">
@@ -56,73 +64,75 @@
     </article>
 </div>
 <div id="donation-details" class="box is-hidden">
-    <article class="panel is-primary">
-        <p class="panel-heading .has-text-centered">
+    <article class="panel container is-primary">
+        <p class="panel-heading">
             Donation details:
         </p>
         <br>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Donor Name</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <h2 id="name"></h2>
+        <div class="box">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Donor Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <h2 id="name"></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Category</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p id="category"></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Category</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p id="category"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Description</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p id="description"></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Description</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p id="description"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Contact details</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p id="email"></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Contact details</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p id="email"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label"></label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p id="phnumber"></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p id="phnumber"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="columns is-centered is-vcentered">
-            <div class="column"></div>
-            <div class="column is-narrow">
-                <button id="backBtn" class="button is-primary is-vcentered" style="text-align:center">
-                    Go Back
-                </button>
+            <div class="columns is-centered is-vcentered">
+                <div class="column"></div>
+                <div class="column is-narrow">
+                    <button id="backBtn" class="button is-primary is-vcentered" style="text-align:center">
+                        Go Back
+                    </button>
+                </div>
+                <div class="column"></div>
             </div>
-            <div class="column"></div>
         </div>
-        <br>
     </article>
 </div>
 
+{{!-- {{#section 'script'}} --}}
 <script type="application/javascript" src="assets/js/listDonations.js"></script>
-
+{{!-- {{/section}} --}}
