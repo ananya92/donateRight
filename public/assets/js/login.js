@@ -13,12 +13,7 @@ $(document).ready(function() {
         	var pass = data.find(element => element.email == emailInput.val());
         	if(pass) {
           		// entered email ID is found in database
-          		if(charity.length>0) { // replaced pass.charityKey
-					// The user record has a charity key
-					// if(charity === "") {
-					//   $("#errorMsg").text("Charity key cannot be blank for charity users!");
-					//   return;
-					// }
+          		if(charity.length>0) { 
             		if(charity == pass.charityKey && emailInput.val() == pass.email) {
               			// Entered charity key matches with the charity key of user in database
               			var userData = {
