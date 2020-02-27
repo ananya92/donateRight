@@ -21,9 +21,9 @@ async function initMap() {
         center: myLocation
     });
 
-    var contentString = '<button type="submit" class="setLocal">Set Location</button>';
+    var contentString = '<button type="submit" class="setLocal button is-primary">Set Location</button>';
 
-    var infowindow = new google.maps.InfoWindow({
+    var infowindow1 = new google.maps.InfoWindow({
         content: contentString
     });
 
@@ -33,10 +33,18 @@ async function initMap() {
         draggable: true,
         title: 'Donation location'
     });
-    
+
     marker.addListener('click', function() {
-        infowindow.open(map, marker);
+        infowindow2.close();
+        infowindow1.open(map, marker);
     });
+
+    var infowindow2 = new google.maps.InfoWindow({
+        content: '<p>Click and drag the marker to set the location.</p>'
+    });
+
+    //Show to user when page loads to inform them how to set the location
+    infowindow2.open(map, marker);
 
     //get marker position if user moves it
     google.maps.event.addListener(marker, 'dragend', function (evt) {
