@@ -30,4 +30,9 @@ $(document).ready(function() {
     });
     //Fire when the page first loads to set the float of the components based on screen size
     alterClass();
+
+    $(".mission").hover(function(){
+        $(this).toggleClass("is-dark", 20);
+        $(this).toggleClass("is-light", 20);
+	});
   });
