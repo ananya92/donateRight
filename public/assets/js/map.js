@@ -287,11 +287,11 @@ function initMap(mapLocation) {
 						position: markerlocation,
 						icon: icons["Event"].icon,
 						customInfo: {
-							title: info.Charity.name,
+							title: info.title,
 							description: info.description,
-							name: info.name,
-							phone: info.phoneNumber,
-							email: info.email
+							name: info.Charity.name,
+							phone: info.Charity.phoneNumber,
+							email: info.Charity.email
 						}
 					});
 				}),
@@ -328,8 +328,11 @@ function initMap(mapLocation) {
 						var content = this.customInfo;
 						infowindow.setContent(
 							"<strong>EVENT</strong>" +
-							"<br><Strong>Charity:</Strong> " + content.title +
-							"<br><Strong>Description:</Strong> "+ content.description
+							"<br><Strong>Title:</Strong> " + content.title +
+							"<br><Strong>Description:</Strong> "+ content.description +
+							"<br><Strong>Charity:</Strong> " + content.name +
+							"<br><Strong>Phone:</Strong> " + content.phone + 
+							"<br><Strong>Email:</Strong> " + content.email
 						);
 						infowindow.open(this.getMap(), this);
 					});
