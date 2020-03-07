@@ -4,6 +4,7 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+var compression = require("compression")
 var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
@@ -16,6 +17,9 @@ var db = require("./models");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+// Using compression npm to improve performance
+app.use(compression())
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
