@@ -38,6 +38,16 @@ Currently there is no single platform where individuals wishing to donate and di
 ## Deployed application URL 
 https://donateright.herokuapp.com/
 
+## Application Screenshots
+![Project Snapshot](https://github.com/ananya92/My-Portfolio/blob/master/src/components/projects/img/pr1_1.png)
+***
+![Project Snapshot](https://github.com/ananya92/My-Portfolio/blob/master/src/components/projects/img/pr1_2.JPG)
+***
+![Project Snapshot](https://github.com/ananya92/My-Portfolio/blob/master/src/components/projects/img/pr1_3.JPG)
+***
+![Project Snapshot](https://github.com/ananya92/My-Portfolio/blob/master/src/components/projects/img/pr1_4.JPG)
+
+
 ## Authors
 Ananya Pramanik / Edward Michael Coad / Stephanie Georgiadis
 
